@@ -68,7 +68,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="winAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="winLogeo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -76,8 +80,11 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.vb">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="winAdmin.xaml.vb">
+      <DependentUpon>winAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="winLogeo.xaml.vb">
+      <DependentUpon>winLogeo.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
