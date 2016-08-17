@@ -8,6 +8,7 @@
         Title="winVendedor" Height="300" Width="300" Closed="Window_Closed">
     <Grid>
         <Label x:Name="label" Content="Vendedor" HorizontalAlignment="Left" Height="39" Margin="72,62,0,0" VerticalAlignment="Top" Width="67"/>
+        <Label x:Name="label1" Content="Miu" HorizontalAlignment="Left" Height="63" Margin="96,139,0,0" VerticalAlignment="Top" Width="98"/>
 
     </Grid>
 </Window>
