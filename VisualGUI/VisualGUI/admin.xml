@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<collection shelf="Administradores">
+	<Admin>
+		<usuario>Deathpaul</usuario>
+		<contraseña>paul</contraseña>
+		<nombre>Jean Paul</nombre>
+		<apellido>Valle</apellido>
+		<telefono>2040131</telefono>
+		<direccion>Julio Cartagena</direccion>
+		
+	</Admin>
+	<Admin>
+		<usuario>Shimberly</usuario>
+		<contraseña>kim</contraseña>
+		<nombre>Kimmy</nombre>
+		<apellido>Muñoz</apellido>
+		<telefono>2036897</telefono>
+		<direccion>Samanes</direccion>
+	</Admin>
+	<Admin>
+		<usuario>Shander</usuario>
+		<contraseña>yander</contraseña>
+		<nombre>Yander</nombre>
+		<apellido>Santana</apellido>
+		<telefono>2069782</telefono>
+		<direccion>Riocentro Sur</direccion>
+	</Admin>
+	<Admin>
+		<usuario>Keila</usuario>
+		<contraseña>gatito</contraseña>
+		<nombre>Keyla</nombre>
+		<apellido>Margarita</apellido>
+		<telefono>2036885</telefono>
+		<direccion>Sur Oeste</direccion>
+	</Admin>
+	<Admin>
+		<usuario>Chibi</usuario>
+		<contraseña>paola</contraseña>
+		<nombre>Paola</nombre>
+		<apellido>Ortiz</apellido>
+		<telefono>2058697</telefono>
+		<direccion>Alborada</direccion>
+	</Admin>	
+	<Vendedor>
+  		<usuario>Ricardo</usuario>
+  		<contraseña>pogo</contraseña>
+		<nombre>Ricardo</nombre>
+		<apellido>Pogo</apellido>
+		<telefono>2020452</telefono>
+		<direccion>Sur Este</direccion>
+ 	</Vendedor>
+ 	<Vendedor>
+  		<usuario>Miguel</usuario>
+  		<contraseña>coleta</contraseña>
+		<nombre>Kimmy</nombre>
+		<apellido>Miguel</apellido>
+		<telefono>2020456</telefono>
+		<direccion>Metropolis</direccion>
+ 	</Vendedor>
+	
+</collection>
