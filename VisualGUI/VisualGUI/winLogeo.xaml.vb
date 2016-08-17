@@ -32,7 +32,7 @@ Class winLogeo
             winVendedor.Show()
             Me.Hide()
         Else
-            MessageBox.Show("Usuario o contraseña incorrecta!")
+            MessageBox.Show("Usuario o contraseña incorrecta! TE AMO")
         End If
     End Sub
 End Class
