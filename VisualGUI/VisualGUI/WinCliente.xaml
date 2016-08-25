@@ -7,17 +7,17 @@
         mc:Ignorable="d"
         Title="CLIENTE" Height="300" Width="388.618" Closed="Window_Closed">
     <Grid Background="#FFF2DFFF">
-        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Height="34" Margin="57,18,0,0" VerticalAlignment="Top" Width="102" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Height="35" Margin="57,57,0,0" VerticalAlignment="Top" Width="121" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label2" Content="RUC" HorizontalAlignment="Left" Height="36" Margin="57,97,0,0" VerticalAlignment="Top" Width="75" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Height="34" Margin="57,18,0,0" VerticalAlignment="Top" Width="102" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Height="35" Margin="57,57,0,0" VerticalAlignment="Top" Width="121" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label2" Content="RUC" HorizontalAlignment="Left" Height="36" Margin="57,97,0,0" VerticalAlignment="Top" Width="75" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="26" Margin="196,26,-27,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
         <TextBox x:Name="txtRuc" HorizontalAlignment="Left" Height="26" Margin="196,100,-27,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <Label x:Name="label3_Copy" Content="Dirección" HorizontalAlignment="Left" Height="37" Margin="57,137,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label3_Copy1" Content="Teléfono" HorizontalAlignment="Left" Height="37" Margin="57,179,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label3_Copy" Content="Dirección" HorizontalAlignment="Left" Height="37" Margin="57,137,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label3_Copy1" Content="Teléfono" HorizontalAlignment="Left" Height="37" Margin="57,179,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="26" Margin="196,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
         <TextBox x:Name="txtTelefono" HorizontalAlignment="Left" Height="26" Margin="196,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
         <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="26" Margin="196,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <Button x:Name="button" Content="Guardar" HorizontalAlignment="Left" Height="26" Margin="145,233,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button x:Name="button" Content="Guardar" HorizontalAlignment="Left" Height="31" Margin="145,228,0,0" VerticalAlignment="Top" Width="94" FontSize="22"/>
 
     </Grid>
 </Window>

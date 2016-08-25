@@ -1,0 +1,7 @@
+<collection>
+  <TipoPago>
+    <efectivo>0</efectivo>
+    <tarjeta>1</tarjeta>
+    <dinero_electronico>4</dinero_electronico>
+  </TipoPago>
+</collection>

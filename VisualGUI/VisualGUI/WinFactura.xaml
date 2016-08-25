@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="FACTURA" Height="603.329" Width="927.069" Closed="Window_Closed">
+        Title="FACTURA" Height="603.329" Width="927.069" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFDFFFC9">
-        <DataGrid x:Name="dtgDetalle" HorizontalAlignment="Left" Height="194" Margin="34,164,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
+        <DataGrid x:Name="dtgDetalle" ItemsSource="{Binding Path=Detalle}" HorizontalAlignment="Left" Height="194" Margin="34,164,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
         <Button x:Name="btnDetalle" Content="Agregar Detalle" HorizontalAlignment="Left" Height="30" Margin="34,358,0,0" VerticalAlignment="Top" Width="163" Background="#FFFFF2D0" FontSize="18"/>
         <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="193,427,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="42" Margin="193,486,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
