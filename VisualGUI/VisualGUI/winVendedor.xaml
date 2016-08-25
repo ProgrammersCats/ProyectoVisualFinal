@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="winVendedor" Height="300" Width="300" Closed="Window_Closed">
-    <Grid>
-        <Label x:Name="label" Content="Vendedor" HorizontalAlignment="Left" Height="39" Margin="72,62,0,0" VerticalAlignment="Top" Width="67"/>
-        <Label x:Name="label1" Content="Miu" HorizontalAlignment="Left" Height="63" Margin="96,139,0,0" VerticalAlignment="Top" Width="98"/>
-
+        Title="VENDEDOR" Height="318.699" Width="452.033" Closed="Window_Closed">
+    <Grid Background="#FFE8FAFF">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="225" Margin="10,10,0,0" VerticalAlignment="Top" Width="424" Background="#FFF2E2FF"/>
+        <Button x:Name="button" Content="Agregar Factura" HorizontalAlignment="Left" Height="36" Margin="153,242,0,0" VerticalAlignment="Top" Width="154" Background="#FFFFF2CF" FontSize="20"/>
     </Grid>
 </Window>

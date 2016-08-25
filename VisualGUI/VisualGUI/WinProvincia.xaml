@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="WinProvincia" Height="323.577" Width="363.415">
-    <Grid Margin="0,0,2,-2">
+        Title="PROVINCIA" Height="323.577" Width="363.415" Closed="Window_Closed">
+    <Grid Margin="0,0,2,-2" Background="#FFF2DFFF">
         <Label x:Name="label" Content="Id" HorizontalAlignment="Left" Height="34" Margin="46,14,0,0" VerticalAlignment="Top" Width="102" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label1" Content="Nombre" HorizontalAlignment="Left" Height="35" Margin="46,67,0,0" VerticalAlignment="Top" Width="121" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label2" Content="Capital" HorizontalAlignment="Left" Height="36" Margin="46,121,0,0" VerticalAlignment="Top" Width="75" FontSize="18" FontFamily="Segoe UI Semibold"/>
@@ -15,9 +15,9 @@
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="35" Margin="174,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
         <TextBox x:Name="txtCapital" HorizontalAlignment="Left" Height="36" Margin="174,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
         <TextBox x:Name="txtIva" HorizontalAlignment="Left" Height="37" Margin="174,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="46,244,0,0" VerticalAlignment="Top" Width="70" FontSize="16" FontFamily="Segoe UI Semilight"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="34" Margin="144,244,0,0" VerticalAlignment="Top" Width="70" FontSize="16" FontFamily="Segoe UI Semilight"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="243,244,0,0" VerticalAlignment="Top" Width="67" FontSize="16" FontFamily="Segoe UI Semilight"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="46,244,0,0" VerticalAlignment="Top" Width="70" FontSize="16" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="34" Margin="144,244,0,0" VerticalAlignment="Top" Width="70" FontSize="16" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="243,244,0,0" VerticalAlignment="Top" Width="67" FontSize="16" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
 
     </Grid>
 </Window>

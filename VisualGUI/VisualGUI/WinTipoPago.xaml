@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="WinTipoPago" Height="286.992" Width="300">
-    <Grid Margin="0,0,0,2">
+        Title="TIPO DE PAGO" Height="286.992" Width="300" Closed="Window_Closed">
+    <Grid Margin="0,0,0,2" Background="#FFF2DFFF">
         <Label x:Name="label" Content="Efectivo" HorizontalAlignment="Left" Height="34" Margin="10,28,0,0" VerticalAlignment="Top" Width="130" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label1" Content="Tarjeta de Crédito" HorizontalAlignment="Left" Height="35" Margin="10,81,0,0" VerticalAlignment="Top" Width="154" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label2" Content="Dinero Electrónico" HorizontalAlignment="Left" Height="36" Margin="10,135,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="34" Margin="195,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="35" Margin="195,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="36" Margin="195,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
-        <Button x:Name="button" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="102,200,0,0" VerticalAlignment="Top" Width="99"/>
+        <Button x:Name="button" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="102,200,0,0" VerticalAlignment="Top" Width="99" FontSize="18" Background="#FFFFF2CF"/>
 
     </Grid>
 </Window>

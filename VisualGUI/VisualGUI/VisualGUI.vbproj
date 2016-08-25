@@ -68,8 +68,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WinCliente.xaml.vb">
+      <DependentUpon>WinCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinDatosVendedor.xaml.vb">
       <DependentUpon>WinDatosVendedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDetalle.xaml.vb">
+      <DependentUpon>WinDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinFactura.xaml.vb">
+      <DependentUpon>WinFactura.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinProducto.xaml.vb">
       <DependentUpon>WinProducto.xaml</DependentUpon>
@@ -87,7 +96,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WinCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinDatosVendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDetalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinFactura.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
