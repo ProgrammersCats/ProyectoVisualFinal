@@ -68,6 +68,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WinProducto.xaml.vb">
+      <DependentUpon>WinProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinProvincia.xaml.vb">
+      <DependentUpon>WinProvincia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinTipoPago.xaml.vb">
+      <DependentUpon>WinTipoPago.xaml</DependentUpon>
+    </Compile>
     <Compile Include="winVendedor.xaml.vb">
       <DependentUpon>winVendedor.xaml</DependentUpon>
     </Compile>
@@ -93,6 +102,18 @@
       <DependentUpon>winLogeo.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WinProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinProvincia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinTipoPago.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="winVendedor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

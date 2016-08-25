@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="Administrador" Height="300" Width="300">
-    <Grid>
+        Title="Administrador" Height="300" Width="341.463">
+    <Grid Margin="0,0,2,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFFAFEFF" Offset="0.152"/>
                 <GradientStop Color="#FF86DCF0" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="292">
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="321" Margin="5,0,0,0">
             <MenuItem Header="Productos"/>
             <MenuItem Header="Vendedores"/>
             <MenuItem Header="Provincias"/>
-            <MenuItem Header="Aiudaaaa"/>
+            <MenuItem Header="Tipo de pago" Click="MenuItem_Click"/>
         </Menu>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="178" Margin="10,81,0,0" VerticalAlignment="Top" Width="272"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="215" Margin="10,44,0,0" VerticalAlignment="Top" Width="311"/>
     </Grid>
 </Window>
