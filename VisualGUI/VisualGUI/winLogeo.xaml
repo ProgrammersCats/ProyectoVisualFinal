@@ -15,10 +15,10 @@
         </Grid.Background>
         <Label x:Name="lblUser" Content="User:" HorizontalAlignment="Left" Margin="147,108,0,0" VerticalAlignment="Top" Height="37" Width="67" FontFamily="Arial" FontSize="20"/>
         <Label x:Name="lblPass" Content="Password:" HorizontalAlignment="Left" Margin="104,168,0,0" VerticalAlignment="Top" Height="34" Width="105" FontFamily="Arial" FontSize="20"/>
-        <PasswordBox x:Name="txtPass" HorizontalAlignment="Left" Margin="236,167,0,0" VerticalAlignment="Top" Width="163" Height="34"/>
-        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Height="34" Margin="236,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
-        <Label x:Name="lblSesion" Content="Iniciar Sesión" HorizontalAlignment="Left" Margin="162,28,0,0" VerticalAlignment="Top" Height="37" Width="212" FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
-        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="126,251,0,0" VerticalAlignment="Top" Width="104" FontFamily="Arial" FontSize="24" Height="44">
+        <PasswordBox x:Name="txtPass" HorizontalAlignment="Left" Margin="236,167,0,0" VerticalAlignment="Top" Width="163" Height="34" Background="#FFF2F9FF" BorderBrush="#FFD0D5FF" FontSize="20"/>
+        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Height="34" Margin="236,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" Background="#FFF2F9FF" BorderBrush="#FFD0D5FF" FontSize="20"/>
+        <Label x:Name="lblSesion" Content="Iniciar Sesión" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" Height="58" Width="232" FontFamily="Leelawadee UI Semilight" FontSize="40" FontWeight="Bold" Foreground="#FF007587"/>
+        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="126,251,0,0" VerticalAlignment="Top" Width="104" FontFamily="Sitka Heading" FontSize="28" Height="44" Foreground="#FF000B23">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFEFFFFF" Offset="0.003"/>
@@ -26,7 +26,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCerrar" Content="Cerrar" HorizontalAlignment="Left" Margin="291,251,0,0" VerticalAlignment="Top" Width="108" FontFamily="Arial" FontSize="24" Height="44">
+        <Button x:Name="btnCerrar" Content="Cerrar" HorizontalAlignment="Left" Margin="291,251,0,0" VerticalAlignment="Top" Width="108" FontFamily="Sitka Heading" FontSize="28" Height="44" Foreground="#FF000B23">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFEFFFFF" Offset="0.003"/>
