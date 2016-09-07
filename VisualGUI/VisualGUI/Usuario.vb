@@ -1,6 +1,15 @@
 ﻿Imports System.Xml
 
 Public Class Usuario
+    Private _id As Integer
+    Public Property Id() As Integer
+        Get
+            Return _id
+        End Get
+        Set(ByVal value As Integer)
+            _id = value
+        End Set
+    End Property
     Private _nombre As String
     Public Property Nombre() As String
         Get
@@ -70,7 +79,8 @@ Public Class Usuario
 
     End Sub
 
-    Public Sub New(usuario As String, contraseña As String, nombre As String, apellido As String, telefono As String, direccion As String, rol As String)
+    Public Sub New(id As Integer, usuario As String, contraseña As String, nombre As String, apellido As String, telefono As String, direccion As String, rol As String)
+        Me.Id = id
         Me.Nombre = nombre
         Me.Apellido = apellido
         Me.Telefono = telefono

@@ -2,8 +2,8 @@
 Imports System.Data.OleDb
 
 Public Class winAdmin
-    Dim path As String = "..\..\..\BDEmpresa.accdb"
-    Dim dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
+    Public path As String = "..\..\..\BDEmpresa.accdb"
+    Public dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
     Private Sub winAdmin_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed, MyBase.Closed
         Me.Hide()
         Me.Owner.Show()
@@ -98,7 +98,7 @@ Public Class winAdmin
     Private Sub dtgUsuarios_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgUsuarios.SelectionChanged
         Dim fila As DataRowView = sender.SelectedItem
         If Not (fila Is Nothing) Then
-            Dim usuario As New Usuario(fila(1), fila(2), fila(3), fila(4), fila(5), fila(6), fila(7))
+            Dim usuario As New Usuario(fila(0), fila(1), fila(2), fila(3), fila(4), fila(5), fila(6), fila(7))
             Dim winUsuario As New WinUsuario
             winUsuario.Owner = Me
             winUsuario.DataContext = usuario

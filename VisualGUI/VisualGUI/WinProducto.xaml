@@ -15,9 +15,8 @@
         <TextBox x:Name="txtDesc" Text="{Binding Descripcion}" HorizontalAlignment="Left" Height="35" Margin="196,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
         <TextBox x:Name="txtCosto" Text="{Binding Costo}" HorizontalAlignment="Left" Height="36" Margin="196,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
         <TextBox x:Name="txtPrecio" Text="{Binding Precio}" HorizontalAlignment="Left" Height="37" Margin="196,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="31,243,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="34" Margin="143,243,0,0" VerticalAlignment="Top" Width="81" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="257,243,0,0" VerticalAlignment="Top" Width="77" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="79,243,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="208,243,0,0" VerticalAlignment="Top" Width="77" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
 
     </Grid>
 </Window>

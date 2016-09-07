@@ -1,8 +1,8 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
 Public Class WinTipoPago
-    Dim path As String = "../../../BDEmpresa.accdb"
-    Dim dbPath As String = "Provider=Microsoft.ACE.oledb.12.0;Data Source=" & path
+
+
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winAdmin As winAdmin = Me.Owner
         winAdmin.Show()
@@ -10,8 +10,9 @@ Public Class WinTipoPago
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
+        Dim winAdmin As winAdmin = Me.Owner
         Dim flag = False
-        Using dbConexion As New OleDbConnection(dbPath)
+        Using dbConexion As New OleDbConnection(winAdmin.dbPath)
             Dim sentencia As String = "Select * from Pagos"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
             Dim personaCmdBuilder As New OleDbCommandBuilder(dbAdapter)

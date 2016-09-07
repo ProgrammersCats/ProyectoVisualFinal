@@ -5,25 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="DATOS VENDEDOR" Height="411.349" Width="398.553" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="DATOS VENDEDOR" Height="463.774" Width="398.553" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFF2DFFF">
-        <Label x:Name="label" Content="Usuario" HorizontalAlignment="Left" Height="34" Margin="57,18,0,0" VerticalAlignment="Top" Width="102" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label1" Content="Contraseña" HorizontalAlignment="Left" Height="35" Margin="57,57,0,0" VerticalAlignment="Top" Width="121" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label2" Content="Nombre" HorizontalAlignment="Left" Height="36" Margin="57,97,0,0" VerticalAlignment="Top" Width="75" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label3" Content="Apellido" HorizontalAlignment="Left" Height="37" Margin="57,138,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtUser" Text="{Binding Usuario}" HorizontalAlignment="Left" Height="26" Margin="196,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <TextBox x:Name="txtNombre" Text="{Binding Nombre}" HorizontalAlignment="Left" Height="26" Margin="196,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <TextBox x:Name="txtApellido" Text="{Binding Apellido}" HorizontalAlignment="Left" Height="26" Margin="196,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="46,324,0,0" VerticalAlignment="Top" Width="83" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Height="34" Margin="162,324,0,0" VerticalAlignment="Top" Width="83" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="279,324,0,0" VerticalAlignment="Top" Width="79" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
-        <Label x:Name="label3_Copy" Content="Dirección" HorizontalAlignment="Left" Height="37" Margin="57,222,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="label3_Copy1" Content="Teléfono" HorizontalAlignment="Left" Height="37" Margin="57,179,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtDireccion" Text="{Binding Direccion}" HorizontalAlignment="Left" Height="26" Margin="196,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <TextBox x:Name="txtTelefono" Text="{Binding Telefono}" HorizontalAlignment="Left" Height="26" Margin="196,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <Label x:Name="label3_Copy2" Content="Rol" HorizontalAlignment="Left" Height="37" Margin="57,262,0,0" VerticalAlignment="Top" Width="86" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtRol" Text="{Binding Rol}" HorizontalAlignment="Left" Height="26" Margin="196,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
-        <TextBox x:Name="txtPass" Text="{Binding Contraseña}" HorizontalAlignment="Left" Height="26" Margin="196,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"/>
+        <Label x:Name="label" Content="Usuario" HorizontalAlignment="Left" Height="34" Margin="57,56,0,0" VerticalAlignment="Top" Width="119" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label1" Content="Contraseña" HorizontalAlignment="Left" Height="35" Margin="57,95,0,0" VerticalAlignment="Top" Width="141" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label2" Content="Nombre" HorizontalAlignment="Left" Height="36" Margin="57,135,0,0" VerticalAlignment="Top" Width="87" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label3" Content="Apellido" HorizontalAlignment="Left" Height="37" Margin="57,176,0,0" VerticalAlignment="Top" Width="100" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="txtUser" Text="{Binding Usuario}" HorizontalAlignment="Left" Height="26" Margin="196,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <TextBox x:Name="txtNombre" Text="{Binding Nombre}" HorizontalAlignment="Left" Height="26" Margin="196,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <TextBox x:Name="txtApellido" Text="{Binding Apellido}" HorizontalAlignment="Left" Height="26" Margin="196,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="34" Margin="96,373,0,0" VerticalAlignment="Top" Width="83" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="34" Margin="223,373,0,0" VerticalAlignment="Top" Width="79" FontSize="20" FontFamily="Segoe UI Semilight" Background="#FFFFF2CF"/>
+        <Label x:Name="label3_Copy" Content="Dirección" HorizontalAlignment="Left" Height="37" Margin="57,260,0,0" VerticalAlignment="Top" Width="100" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="label3_Copy1" Content="Teléfono" HorizontalAlignment="Left" Height="37" Margin="57,217,0,0" VerticalAlignment="Top" Width="100" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="txtDireccion" Text="{Binding Direccion}" HorizontalAlignment="Left" Height="26" Margin="196,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <TextBox x:Name="txtTelefono" Text="{Binding Telefono}" HorizontalAlignment="Left" Height="26" Margin="196,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <Label x:Name="label3_Copy2" Content="Rol" HorizontalAlignment="Left" Height="37" Margin="57,300,0,0" VerticalAlignment="Top" Width="100" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="txtRol" Text="{Binding Rol}" HorizontalAlignment="Left" Height="26" Margin="196,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <TextBox x:Name="txtPass" Text="{Binding Contraseña}" HorizontalAlignment="Left" Height="26" Margin="196,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
+        <Label x:Name="label_Copy" Content="Id" HorizontalAlignment="Left" Height="34" Margin="57,22,0,0" VerticalAlignment="Top" Width="119" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="txtId" Text="{Binding Id}" HorizontalAlignment="Left" Height="26" Margin="196,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="14"/>
 
     </Grid>
 </Window>

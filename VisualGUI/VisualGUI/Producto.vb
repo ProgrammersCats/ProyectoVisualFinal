@@ -36,7 +36,7 @@
         End Set
     End Property
 
-    Sub New(id As String, descripcion As String, precio As Double, costo As Double)
+    Sub New(id As String, descripcion As String, costo As Double, precio As Double)
         Me.Id = id
         Me.Descripcion = descripcion
         Me.Costo = costo
