@@ -59,16 +59,16 @@ Public Class winAdmin
         ocultarDtg()
     End Sub
 
-    Private Sub btnVendedores_Click(sender As Object, e As RoutedEventArgs) Handles btnVendedores.Click
+    Private Sub btnUsuarios_Click(sender As Object, e As RoutedEventArgs) Handles btnUsuarios.Click
         Using dbConexion As New OleDbConnection(dbPath)
-            Dim sentencia As String = "Select * from Usuarios where Rol = 'Vendedor'"
+            Dim sentencia As String = "Select * from Usuarios"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
-            Dim dsVendedor As New DataSet
-            dbAdapter.Fill(dsVendedor, "Vendedores")
+            Dim dsUsuario As New DataSet
+            dbAdapter.Fill(dsUsuario, "Usuarios")
 
-            dtgVendedores.DataContext = dsVendedor
+            dtgUsuarios.DataContext = dsUsuario
             ocultarDtg()
-            dtgVendedores.Visibility = Visibility.Visible
+            dtgUsuarios.Visibility = Visibility.Visible
 
         End Using
 
@@ -76,7 +76,7 @@ Public Class winAdmin
     Sub ocultarDtg()
         dtgProvincias.Visibility = Visibility.Hidden
         dtgPagos.Visibility = Visibility.Hidden
-        dtgVendedores.Visibility = Visibility.Hidden
+        dtgUsuarios.Visibility = Visibility.Hidden
         dtgProductos.Visibility = Visibility.Hidden
     End Sub
 
@@ -95,17 +95,17 @@ Public Class winAdmin
 
     End Sub
 
-    Private Sub dtgVendedores_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgVendedores.SelectionChanged
-        'Dim fila As DataRowView = sender.SelectedItem
-        'If Not (fila Is Nothing) Then
-        '    Dim vendedor As New Vendedor(fila(0), fila(1), fila(2), fila(3))
-        '    Dim winProducto As New WinProducto
-        '    winProducto.Owner = Me
-        '    winProducto.DataContext = prod
-        '    winProducto.Show()
-        '    Me.Hide()
+    Private Sub dtgUsuarios_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgUsuarios.SelectionChanged
+        Dim fila As DataRowView = sender.SelectedItem
+        If Not (fila Is Nothing) Then
+            Dim usuario As New Usuario(fila(1), fila(2), fila(3), fila(4), fila(5), fila(6), fila(7))
+            Dim winUsuario As New WinUsuario
+            winUsuario.Owner = Me
+            winUsuario.DataContext = usuario
+            winUsuario.Show()
+            Me.Hide()
 
-        'End If
+        End If
     End Sub
 
     Private Sub dtgProvincias_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgProvincias.SelectionChanged
@@ -126,11 +126,11 @@ Public Class winAdmin
     Private Sub dtgPagos_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgPagos.SelectionChanged
         Dim fila As DataRowView = sender.SelectedItem
         If Not (fila Is Nothing) Then
-            Dim prod As New Producto(fila(0), fila(1), fila(2), fila(3))
-            Dim winProducto As New WinProducto
-            winProducto.Owner = Me
-            winProducto.DataContext = prod
-            winProducto.Show()
+            Dim pagos As New Pagos(fila(0), fila(1), fila(2))
+            Dim winPagos As New WinTipoPago
+            winPagos.Owner = Me
+            winPagos.DataContext = pagos
+            winPagos.Show()
             Me.Hide()
 
         End If

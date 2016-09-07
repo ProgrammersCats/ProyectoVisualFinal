@@ -68,13 +68,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pagos.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Provincia.vb" />
     <Compile Include="WinCliente.xaml.vb">
       <DependentUpon>WinCliente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinDatosVendedor.xaml.vb">
-      <DependentUpon>WinDatosVendedor.xaml</DependentUpon>
+    <Compile Include="WinUsuario.xaml.vb">
+      <DependentUpon>WinUsuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinDetalle.xaml.vb">
       <DependentUpon>WinDetalle.xaml</DependentUpon>
@@ -102,7 +103,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WinDatosVendedor.xaml">
+    <Page Include="WinUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,13 +119,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Admin.vb" />
     <Compile Include="Application.xaml.vb">
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Persona.vb" />
-    <Compile Include="Vendedor.vb" />
+    <Compile Include="Usuario.vb" />
     <Compile Include="winAdmin.xaml.vb">
       <DependentUpon>winAdmin.xaml</DependentUpon>
     </Compile>
