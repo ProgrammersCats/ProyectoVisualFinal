@@ -69,6 +69,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Producto.vb" />
+    <Compile Include="Provincia.vb" />
     <Compile Include="WinCliente.xaml.vb">
       <DependentUpon>WinCliente.xaml</DependentUpon>
     </Compile>

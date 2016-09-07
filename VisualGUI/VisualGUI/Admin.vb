@@ -67,45 +67,6 @@ Public Class Admin
     '    Me.TipoPagos.ModificarPagos(opcion)
     'End Sub
 
-    Public Overrides Function ValidarDatos()
-        Dim path As String = "..\..\admin.xml"
-        Dim XmlDom As New XmlDocument()
-        XmlDom.Load(path)
-        Dim raiz As XmlNodeList = XmlDom.GetElementsByTagName("collection")
-        Dim cont As Short = 0
-        For Each nodo As XmlNode In raiz
-            For Each admin As XmlNode In nodo.ChildNodes
-                If (admin.Name.Contains("Admin")) Then
-                    For Each datos As XmlNode In admin.ChildNodes
-                        Select Case datos.Name
-                            Case "usuario"
-                                If (Me.Usuario.Contains(datos.InnerText)) Then
-                                    cont = cont + 1
-                                End If
-
-                            Case "contraseña"
-                                If (Me.Contraseña.Contains(datos.InnerText)) Then
-                                    cont = cont + 1
-                                End If
-                            Case "nombre"
-                                Me.Nombre = datos.InnerText
-                            Case "apellido"
-                                Me.Apellido = datos.InnerText
-                            Case "telefono"
-                                Me.Telefono = datos.InnerText
-                            Case "direccion"
-                                Me.Direccion = datos.InnerText
-                        End Select
-                    Next
-                End If
-            Next
-        Next
-        If (cont = 2) Then
-            Return True
-        End If
-        Return False
-    End Function
-
     'Public Sub ModificarIva()
 
     '    While (True)

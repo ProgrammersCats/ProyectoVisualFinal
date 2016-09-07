@@ -50,9 +50,6 @@ Public Class Persona
         Me.Direccion = direccion
     End Sub
 
-    Public Overridable Function ValidarDatos()
-        Return False
-    End Function
 
 
 End Class
