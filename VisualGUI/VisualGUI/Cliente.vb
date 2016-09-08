@@ -56,7 +56,7 @@
     Public Sub New()
 
     End Sub
-    Public Sub New(id As Integer, nombre As String, apellido As String, telefono As String, direccion As String, rol As String)
+    Public Sub New(id As Integer, nombre As String, apellido As String, telefono As String, direccion As String)
         Me.Id = id
         Me.Nombre = nombre
         Me.Apellido = apellido
