@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cliente.vb" />
+    <Compile Include="DetalleFactura.vb" />
+    <Compile Include="Factura.vb" />
     <Compile Include="Pagos.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Provincia.vb" />
