@@ -23,7 +23,7 @@ Public Class WinFactura
     End Sub
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
-        txtCliente.Text = "Jean Paul"
+        txtCliente.Text = "Kimmy"
         txtFecha.Text = "24/08/2016"
         txtNmrFact.Text = "001"
         txtRuc.Text = "0987546855"
