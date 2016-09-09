@@ -1,4 +1,6 @@
-﻿Public Class Pagos
+﻿Imports System.Data
+
+Public Class Pagos
     Private _id As String
     Public Property Id() As String
         Get
@@ -30,5 +32,10 @@
         Me.Id = id
         Me.Tipo = tipo
         Me.Valor = valor
+    End Sub
+    Public Sub New(fila As DataRow)
+        Me.Id = fila("Id")
+        Me.Tipo = fila("Tipo")
+        Me.Valor = fila("Cantidad")
     End Sub
 End Class

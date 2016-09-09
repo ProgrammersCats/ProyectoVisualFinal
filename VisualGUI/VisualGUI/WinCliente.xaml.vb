@@ -25,9 +25,9 @@ Public Class WinCliente
                     'fila(0) = txtId.Text
                     fila(4) = txtNombre.Text
                     fila(1) = txtApellido.Text
-                    fila(2) = txtRuc.Text
-                    fila(3) = txtDireccion.Text
-                    fila(5) = txtDireccion.Text
+                    fila(2) = txtDireccion.Text
+                    fila(3) = txtTelefono.Text
+                    fila(5) = txtRuc.Text
                     flag = True
                     Exit For
                 End If

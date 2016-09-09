@@ -6,6 +6,7 @@ Public Class WinFactura
     Dim dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
     'Dim winVendedor As winVendedor = Me.Owner
     Dim dsDetalle As DataSet
+    Dim dsComboBox As DataSet
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winVendedor As winVendedor = Me.Owner
         winVendedor.Show()
@@ -38,11 +39,10 @@ Public Class WinFactura
 
         dsDetalle = New DataSet()
         Dim dtDetalle As New DataTable("Detalle")
-        dtDetalle.Columns.Add("Producto")
+        dtDetalle.Columns.Add("Id")
         dtDetalle.Columns.Add("Cantidad")
         dtDetalle.Columns.Add("Total")
         dtDetalle.Columns.Add("idFactura")
-        dtDetalle.Rows.Add("Cuaderno", "10", "1.20", "1")
         dsDetalle.Tables.Add(dtDetalle)
         dtgDetalle.DataContext = dsDetalle
 
@@ -53,15 +53,15 @@ Public Class WinFactura
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
             Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
             Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
-            Dim dsComboBox As New DataSet("ComboBoxes")
-            dbAdapter.Fill(dsComboBox, "Categorias")
+            dsComboBox = New DataSet("ComboBoxes")
+            dbAdapter.Fill(dsComboBox, "Provincias")
             dbAdapter2.Fill(dsComboBox, "Pagos")
             dbAdapter3.Fill(dsComboBox, "Clientes")
             cmbNombre.Items.Clear()
             cmbProvincia.Items.Clear()
             cmbProvincia.Items.Clear()
 
-            For Each cat As DataRow In dsComboBox.Tables("Categorias").Rows
+            For Each cat As DataRow In dsComboBox.Tables("Provincias").Rows
                 cmbProvincia.Items.Add(cat(1))
             Next
             For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
@@ -96,6 +96,53 @@ Public Class WinFactura
     End Sub
 
     Private Sub btnCalcular_Click(sender As Object, e As RoutedEventArgs) Handles btnCalcular.Click
+        Dim factura As New Factura
+        Dim cliente As Cliente
+        Dim provincia As Provincia
+        Dim tipoDePago As Pagos
 
+        Try
+            For Each fila As DataRow In dsComboBox.Tables("Clientes").Rows
+                If cmbNombre.SelectedValue = fila(4) Then
+                    cliente = New Cliente(fila)
+                    factura.Cliente = cliente
+                    MessageBox.Show("lleno Cliente")
+                    Exit For
+                End If
+            Next
+            For Each fila As DataRow In dsComboBox.Tables("Provincias").Rows
+                If cmbProvincia.SelectedValue = fila("Nombre") Then
+                    provincia = New Provincia(fila)
+                    factura.LugarEmision = provincia
+                    MessageBox.Show("lleno Provincia")
+                    Exit For
+                End If
+            Next
+            For Each fila As DataRow In dsComboBox.Tables("Pagos").Rows
+                If cmbTipoPago.SelectedValue = fila(1) Then
+                    tipoDePago = New Pagos(fila)
+                    factura.TipoPago = tipoDePago
+                    MessageBox.Show("lleno Tipo de Pago")
+                    Exit For
+                End If
+            Next
+            For Each fila As DataRow In dsDetalle.Tables("Detalle").Rows
+                'factura.Detalles.Add(New DetalleFactura(fila))
+                Dim detalle As New DetalleFactura(fila)
+                factura.agregarDetalle(detalle)
+            Next
+            For Each detalle As DetalleFactura In factura.Detalles
+                MessageBox.Show(detalle.Item.Precio)
+
+            Next
+
+            txtSubtotal.Text = factura.Subtotal
+            txtIva.Text = factura.IVA
+            txtTotal.Text = factura.Total
+            txtDevolucion.Text = factura.Devolucion
+            txtTotalPagar.Text = factura.TotalPagar
+        Catch ex As Exception
+            MessageBox.Show("Llene todos lo campos")
+        End Try
     End Sub
 End Class

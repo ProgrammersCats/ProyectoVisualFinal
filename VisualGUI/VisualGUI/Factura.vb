@@ -64,6 +64,7 @@
             For Each det As DetalleFactura In Me.Detalles
                 subT += det.TotalDetalle
             Next
+            MessageBox.Show(subT)
             Return subT
         End Get
 
@@ -94,13 +95,21 @@
             _devolucion = value
         End Set
     End Property
+    Private _tipoPago As Pagos
+    Public Property TipoPago() As Pagos
+        Get
+            Return _tipoPago
+        End Get
+        Set(ByVal value As Pagos)
+            _tipoPago = value
+        End Set
+    End Property
 
     Private _totalPagar As Double
     Public ReadOnly Property TotalPagar() As Double
         Get
             Return Me.Total - Me.Devolucion
         End Get
-
     End Property
 
     Public Sub New(numero As String)
@@ -110,5 +119,7 @@
         Me.Fecha = Date.Now
         Me.NumeroFactura = 999
     End Sub
-
+    Public Sub agregarDetalle(detalle As DetalleFactura)
+        Me.Detalles.Add(detalle)
+    End Sub
 End Class

@@ -50,4 +50,10 @@ Public Class Producto
         Me.Costo = fila("Costo")
         Me.Precio = fila("Precio")
     End Sub
+    Public Sub New(fila As DataRow)
+        Me.Id = fila(0)
+        Me.Descripcion = fila("Descripcion")
+        Me.Costo = fila("Costo")
+        Me.Precio = fila("Precio")
+    End Sub
 End Class

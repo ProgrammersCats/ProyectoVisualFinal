@@ -1,4 +1,6 @@
-﻿Public Class Provincia
+﻿Imports System.Data
+
+Public Class Provincia
     Private _id As Integer
     Public Property Id() As Integer
         Get
@@ -40,5 +42,11 @@
         Me.Nombre = nombre
         Me.Capital = capital
         Me.Iva = iva
+    End Sub
+    Public Sub New(fila As DataRow)
+        Me.Id = fila("Id")
+        Me.Nombre = fila("Nombre")
+        Me.Capital = fila("Capital")
+        Me.Iva = fila("Iva")
     End Sub
 End Class

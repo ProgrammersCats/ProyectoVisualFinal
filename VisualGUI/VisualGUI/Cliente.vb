@@ -1,4 +1,6 @@
-﻿Public Class Cliente
+﻿Imports System.Data
+
+Public Class Cliente
     Private _id As Integer
     Public Property Id() As Integer
         Get
@@ -26,13 +28,13 @@
             _apellido = value
         End Set
     End Property
-    Private newPropertyValue As String
-    Public Property NewProperty() As String
+    Private _ruc As String
+    Public Property Ruc() As String
         Get
-            Return newPropertyValue
+            Return _ruc
         End Get
         Set(ByVal value As String)
-            newPropertyValue = value
+            _ruc = value
         End Set
     End Property
     Private _telefono As String
@@ -62,6 +64,14 @@
         Me.Apellido = apellido
         Me.Telefono = telefono
         Me.Direccion = direccion
+    End Sub
+    Public Sub New(fila As DataRow)
+        Me.Id = fila("Id")
+        Me.Nombre = fila("Nombre")
+        Me.Apellido = fila("Apellido")
+        Me.Ruc = fila("Ruc")
+        Me.Telefono = fila("Telefono")
+        Me.Direccion = fila("Direccion")
     End Sub
 
 End Class
