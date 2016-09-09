@@ -33,8 +33,17 @@ Public Class WinFactura
         'txtRuc.Text = "0987546855"
         txtVendedor.Text = Me.DataContext.Nombre
 
-        Dim dsDetalle As New DataSet
+        dsDetalle = New DataSet()
+        Dim dtDetalle As New DataTable("Detalle")
+        dtDetalle.Columns.Add("Producto")
+        dtDetalle.Columns.Add("Cantidad")
+        dtDetalle.Columns.Add("Total")
+        dtDetalle.Columns.Add("idFactura")
+        dtDetalle.Rows.Add("Cuaderno", "10", "1.20", "1")
+        dsDetalle.Tables.Add(dtDetalle)
         dtgDetalle.DataContext = dsDetalle
+
+
         'dsDetalle = Me.DataContext
         'dtgDetalle.DataContext = dsDetalle
 
@@ -44,11 +53,11 @@ Public Class WinFactura
         'dtDetalle.Columns.Add("Total")
 
         'dtDetalle.Rows.Add("Bolsa", "5", "50")
-        'dtDetalle.Rows.Add("Cuaderno", "10", "1.20")
+
         'dtDetalle.Rows.Add("Cepillo", "2", "1.50")
         'dtDetalle.Rows.Add("Cartuchera", "1", "9.25")
 
-        'dsDetalle.Tables.Add(dtDetalle)
+
         'dtgDetalle.DataContext = dsDetalle
         'txtSubtotal.Text = "20.40"
         'txtIva.Text = "12.25"

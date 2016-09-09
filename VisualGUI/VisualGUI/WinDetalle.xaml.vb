@@ -48,21 +48,25 @@ Public Class WinDetalle
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
         Dim winVendedor As winVendedor = Me.Owner.Owner
-        Using dbConexion As New OleDbConnection(dbPath)
-            Dim dsDetalle As New DataSet
-            Dim dtDetalle As New DataTable("Detalle")
-            dtDetalle.Columns.Add("IdProducto")
-            dtDetalle.Columns.Add("IdFactura")
-            dtDetalle.Columns.Add("Producto")
-            dtDetalle.Columns.Add("Cantidad")
-            dtDetalle.Columns.Add("Total")
+        Dim winFactura As WinFactura = Me.Owner
+        'Dim dtDetalle = winFactura.DataContext
+        dsDetalle = Me.DataContext
+        'Using dbConexion As New OleDbConnection(dbPath)
+        'Dim dsDetalle As New DataSet
+        '    Dim dtDetalle As New DataTable("Detalle")
+        '    dtDetalle.Columns.Add("IdProducto")
+        '    dtDetalle.Columns.Add("IdFactura")
+        '    dtDetalle.Columns.Add("Producto")
+        '    dtDetalle.Columns.Add("Cantidad")
+        '    dtDetalle.Columns.Add("Total")
 
-            dtDetalle.Rows.Add(productoSelected.Id, txtCantidad.Text, txtTotal.Text, winVendedor.NroFactura)
-            dsDetalle.Tables.Add(dtDetalle)
+        dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, txtCantidad.Text, txtTotal.Text, winVendedor.NroFactura)
 
-            Me.Owner.DataContext = dsDetalle
-            MessageBox.Show(winVendedor.NroFactura)
+        winFactura.dtgDetalle.DataContext = dsDetalle
+        Me.Owner.DataContext = dsDetalle
+        MessageBox.Show(winVendedor.NroFactura)
             MessageBox.Show("Te sigo amando..")
-        End Using
+            MessageBox.Show("Yo igual...")
+        'End Using
     End Sub
 End Class
