@@ -5,6 +5,7 @@ Public Class WinTipoPago
 
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winAdmin As winAdmin = Me.Owner
+        winAdmin.MenuItem_Click_1(Nothing, Nothing)
         winAdmin.Show()
         Me.Close()
     End Sub

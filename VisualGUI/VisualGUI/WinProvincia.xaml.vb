@@ -6,6 +6,7 @@ Public Class WinProvincia
     Dim dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winAdmin As winAdmin = Me.Owner
+        winAdmin.btnProvinvias_Click(Nothing, Nothing)
         winAdmin.Show()
         Me.Close()
     End Sub

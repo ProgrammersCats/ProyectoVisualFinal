@@ -5,6 +5,7 @@ Public Class WinUsuario
 
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winAdmin As winAdmin = Me.Owner
+        winAdmin.btnUsuarios_Click(Nothing, Nothing)
         winAdmin.Show()
         Me.Close()
     End Sub

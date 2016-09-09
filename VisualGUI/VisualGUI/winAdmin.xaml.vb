@@ -9,7 +9,7 @@ Public Class winAdmin
         Me.Owner.Show()
     End Sub
 
-    Private Sub MenuItem_Click(sender As Object, e As RoutedEventArgs)
+    Public Sub MenuItem_Click(sender As Object, e As RoutedEventArgs)
         Using dbConexion As New OleDbConnection(dbPath)
             Dim sentencia As String = "Select * from Pagos"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
@@ -22,7 +22,7 @@ Public Class winAdmin
         End Using
     End Sub
 
-    Private Sub MenuItem_Click_1(sender As Object, e As RoutedEventArgs)
+    Public Sub MenuItem_Click_1(sender As Object, e As RoutedEventArgs)
 
 
         Using dbConexion As New OleDbConnection(dbPath)
@@ -59,7 +59,7 @@ Public Class winAdmin
         ocultarDtg()
     End Sub
 
-    Private Sub btnUsuarios_Click(sender As Object, e As RoutedEventArgs) Handles btnUsuarios.Click
+    Public Sub btnUsuarios_Click(sender As Object, e As RoutedEventArgs) Handles btnUsuarios.Click
         Using dbConexion As New OleDbConnection(dbPath)
             Dim sentencia As String = "Select * from Usuarios"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
@@ -80,7 +80,7 @@ Public Class winAdmin
         dtgProductos.Visibility = Visibility.Hidden
     End Sub
 
-    Private Sub btnProvinvias_Click(sender As Object, e As RoutedEventArgs) Handles btnProvinvias.Click
+    Public Sub btnProvinvias_Click(sender As Object, e As RoutedEventArgs) Handles btnProvinvias.Click
         Using dbConexion As New OleDbConnection(dbPath)
             Dim sentencia As String = "Select * from Provincias"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))

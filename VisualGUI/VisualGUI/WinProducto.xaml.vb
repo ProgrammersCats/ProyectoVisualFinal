@@ -3,6 +3,7 @@ Imports System.Data
 Public Class WinProducto
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winAdmin As winAdmin = Me.Owner
+        winAdmin.MenuItem_Click(Nothing, Nothing)
         winAdmin.Show()
         Me.Close()
     End Sub
