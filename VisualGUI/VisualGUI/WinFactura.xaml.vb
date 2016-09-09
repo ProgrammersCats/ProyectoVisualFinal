@@ -28,7 +28,7 @@ Public Class WinFactura
 
     End Sub
 
-    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
+    Public Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
         Dim winVendedor As winVendedor = Me.Owner
         'txtCliente.Text = "Kimmy"
         txtFecha.Text = DateAndTime.Today
@@ -57,6 +57,10 @@ Public Class WinFactura
             dbAdapter.Fill(dsComboBox, "Categorias")
             dbAdapter2.Fill(dsComboBox, "Pagos")
             dbAdapter3.Fill(dsComboBox, "Clientes")
+            cmbNombre.Items.Clear()
+            cmbProvincia.Items.Clear()
+            cmbProvincia.Items.Clear()
+
             For Each cat As DataRow In dsComboBox.Tables("Categorias").Rows
                 cmbProvincia.Items.Add(cat(1))
             Next
