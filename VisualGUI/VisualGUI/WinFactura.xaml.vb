@@ -1,6 +1,9 @@
 ﻿Imports System.Data
+Imports System.Data.OleDb
 
 Public Class WinFactura
+    Dim path As String = "..\..\..\BDEmpresa.accdb"
+    Dim dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
     'Dim winVendedor As winVendedor = Me.Owner
     Dim dsDetalle As DataSet
     Private Sub Window_Closed(sender As Object, e As EventArgs)
@@ -43,6 +46,28 @@ Public Class WinFactura
         dsDetalle.Tables.Add(dtDetalle)
         dtgDetalle.DataContext = dsDetalle
 
+        Using dbConexion As New OleDbConnection(dbPath)
+            Dim consulta As String = "Select * From Provincias"
+            Dim consulta2 As String = "Select * From Pagos"
+            Dim consulta3 As String = "Select * From Clientes"
+            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
+            Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
+            Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
+            Dim dsComboBox As New DataSet("ComboBoxes")
+            dbAdapter.Fill(dsComboBox, "Categorias")
+            dbAdapter2.Fill(dsComboBox, "Pagos")
+            dbAdapter3.Fill(dsComboBox, "Clientes")
+            For Each cat As DataRow In dsComboBox.Tables("Categorias").Rows
+                cmbProvincia.Items.Add(cat(1))
+            Next
+            For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
+                cmbTipoPago.Items.Add(cat(1))
+            Next
+            For Each cat As DataRow In dsComboBox.Tables("Clientes").Rows
+                cmbNombre.Items.Add(cat(4))
+            Next
+        End Using
+
 
         'dsDetalle = Me.DataContext
         'dtgDetalle.DataContext = dsDetalle
@@ -64,5 +89,9 @@ Public Class WinFactura
         'txtTotal.Text = "32.65"
         'txtDevolucion.Text = "5.10"
         'txtTotalPagar.Text = "27.55"
+    End Sub
+
+    Private Sub btnCalcular_Click(sender As Object, e As RoutedEventArgs) Handles btnCalcular.Click
+
     End Sub
 End Class

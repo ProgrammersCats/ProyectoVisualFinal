@@ -5,33 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="FACTURA" Height="603.329" Width="927.069" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="FACTURA" Height="655.829" Width="927.069" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFDFFFC9">
         <DataGrid x:Name="dtgDetalle" ItemsSource="{Binding Path=Detalle}" HorizontalAlignment="Left" Height="194" Margin="34,164,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
         <Button x:Name="btnDetalle" Content="Agregar Detalle" HorizontalAlignment="Left" Height="30" Margin="34,358,0,0" VerticalAlignment="Top" Width="163" Background="#FFFFF2D0" FontSize="18"/>
-        <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="193,427,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="42" Margin="193,486,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
+        <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="34,487,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="42" Margin="34,546,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
         <Label x:Name="label" Content="No. Factura:" HorizontalAlignment="Left" Height="34" Margin="24,10,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
         <TextBox x:Name="txtNmrFact" HorizontalAlignment="Left" Height="34" Margin="151,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
         <Label x:Name="label1" Content="Fecha:" HorizontalAlignment="Left" Height="35" Margin="620,65,0,0" VerticalAlignment="Top" Width="74" FontSize="20"/>
         <TextBox x:Name="txtFecha" HorizontalAlignment="Left" Height="30" Margin="716,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
         <Label x:Name="label2" Content="Nombre:" HorizontalAlignment="Left" Height="39" Margin="24,111,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
-        <TextBox x:Name="txtCliente" HorizontalAlignment="Left" Height="32" Margin="144,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
-        <Label x:Name="label3" Content="RUC:" HorizontalAlignment="Left" Height="32" Margin="620,115,0,0" VerticalAlignment="Top" Width="61" FontSize="20"/>
+        <Label x:Name="label3" Content="RUC:" HorizontalAlignment="Left" Height="32" Margin="634,115,0,0" VerticalAlignment="Top" Width="61" FontSize="20"/>
         <Button x:Name="btnAgregarCliente" Content="Agregar Cliente" HorizontalAlignment="Left" Height="26" Margin="308,117,0,0" VerticalAlignment="Top" Width="121" Background="#FFEADDBC" FontSize="14"/>
         <TextBox x:Name="txtRuc" HorizontalAlignment="Left" Height="33" Margin="716,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
-        <Label x:Name="label2_Copy" Content="Vendedor:" HorizontalAlignment="Left" Height="35" Margin="24,65,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
-        <TextBox x:Name="txtVendedor" HorizontalAlignment="Left" Height="34" Margin="144,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
-        <Label x:Name="label4" Content="Subtotal: " HorizontalAlignment="Left" Height="35" Margin="570,381,0,0" VerticalAlignment="Top" Width="111" FontSize="20"/>
-        <Label x:Name="label4_Copy" Content="IVA:" HorizontalAlignment="Left" Height="33" Margin="570,416,0,0" VerticalAlignment="Top" Width="54" FontSize="20"/>
-        <Label x:Name="label4_Copy1" Content="Total:" HorizontalAlignment="Left" Height="33" Margin="570,449,0,0" VerticalAlignment="Top" Width="68" FontSize="20"/>
-        <TextBox x:Name="txtSubtotal" HorizontalAlignment="Left" Height="30" Margin="723,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <TextBox x:Name="txtIva" HorizontalAlignment="Left" Height="29" Margin="723,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="31" Margin="723,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <Label x:Name="label4_Copy2" Content="Devolución:" HorizontalAlignment="Left" Height="31" Margin="570,482,0,0" VerticalAlignment="Top" Width="153" FontSize="20"/>
-        <TextBox x:Name="txtDevolucion" HorizontalAlignment="Left" Height="31" Margin="723,487,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <Label x:Name="label4_Copy3" Content="Total a pagar:" HorizontalAlignment="Left" Height="43" Margin="570,519,0,0" VerticalAlignment="Top" Width="153" FontSize="20"/>
-        <TextBox x:Name="txtTotalPagar" HorizontalAlignment="Left" Height="32" Margin="723,524,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <Label x:Name="label2_Copy" Content="Vendedor:" HorizontalAlignment="Left" Height="35" Margin="28,65,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
+        <TextBox x:Name="txtVendedor" HorizontalAlignment="Left" Height="29" Margin="144,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <Label x:Name="label4" Content="Subtotal: " HorizontalAlignment="Left" Height="35" Margin="272,413,0,0" VerticalAlignment="Top" Width="110" FontSize="20"/>
+        <Label x:Name="label4_Copy" Content="IVA:" HorizontalAlignment="Left" Height="33" Margin="272,464,0,0" VerticalAlignment="Top" Width="54" FontSize="20"/>
+        <Label x:Name="label4_Copy1" Content="Total:" HorizontalAlignment="Left" Height="33" Margin="272,513,0,0" VerticalAlignment="Top" Width="68" FontSize="20"/>
+        <TextBox x:Name="txtSubtotal" HorizontalAlignment="Left" Height="30" Margin="424,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="txtIva" HorizontalAlignment="Left" Height="29" Margin="424,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="31" Margin="424,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <Label x:Name="label4_Copy2" Content="Devolución:" HorizontalAlignment="Left" Height="37" Margin="612,454,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>
+        <TextBox x:Name="txtDevolucion" HorizontalAlignment="Left" Height="31" Margin="748,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <Label x:Name="label4_Copy3" Content="Total a pagar:" HorizontalAlignment="Left" Height="43" Margin="596,507,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>
+        <TextBox x:Name="txtTotalPagar" HorizontalAlignment="Left" Height="32" Margin="748,512,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <Button x:Name="btnCalcular" Content="Calcular" HorizontalAlignment="Left" Height="42" Margin="34,426,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
+        <Label x:Name="lblEmi" Content="Lugar de Emisión:" HorizontalAlignment="Left" Height="45" Margin="519,15,0,0" VerticalAlignment="Top" Width="175" FontSize="20"/>
+        <ComboBox x:Name="cmbProvincia" HorizontalAlignment="Left" Margin="716,15,0,0" VerticalAlignment="Top" Width="138" Height="35"/>
+        <Label x:Name="label4_Copy4" Content="Tipo de Pago:" HorizontalAlignment="Left" Height="38" Margin="596,410,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>
+        <ComboBox x:Name="cmbTipoPago" HorizontalAlignment="Left" Margin="748,413,0,0" VerticalAlignment="Top" Width="138" Height="28"/>
+        <ComboBox x:Name="cmbNombre" HorizontalAlignment="Left" Margin="144,113,0,0" VerticalAlignment="Top" Width="154" Height="33"/>
 
     </Grid>
 </Window>

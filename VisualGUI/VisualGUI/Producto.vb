@@ -45,7 +45,7 @@ Public Class Producto
         Me.Precio = precio
     End Sub
     Sub New(fila As DataRowView)
-        'Me.Id = fila("Id")
+        Me.Id = fila(0)
         Me.Descripcion = fila("Descripcion")
         Me.Costo = fila("Costo")
         Me.Precio = fila("Precio")
