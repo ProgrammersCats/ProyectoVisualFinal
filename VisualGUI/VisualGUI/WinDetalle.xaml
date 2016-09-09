@@ -14,7 +14,7 @@
         <TextBox x:Name="txtProducto" HorizontalAlignment="Left" Height="27" Margin="167,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="label2" Content="Total" HorizontalAlignment="Left" Height="32" Margin="67,244,0,0" VerticalAlignment="Top" Width="74" FontSize="16"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="27" Margin="167,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="button" Content="Guardar" HorizontalAlignment="Left" Height="31" Margin="57,291,0,0" VerticalAlignment="Top" Width="79" Background="#FFDDB5FF" FontSize="20"/>
-        <Button x:Name="button1" Content="Eliminar" HorizontalAlignment="Left" Height="31" Margin="179,291,0,0" VerticalAlignment="Top" Width="85" Background="#FFDDB5FF" FontSize="20"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="31" Margin="57,291,0,0" VerticalAlignment="Top" Width="79" Background="#FFDDB5FF" FontSize="20"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="31" Margin="179,291,0,0" VerticalAlignment="Top" Width="85" Background="#FFDDB5FF" FontSize="20"/>
     </Grid>
 </Window>

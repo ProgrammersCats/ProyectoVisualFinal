@@ -1,4 +1,6 @@
-﻿Public Class Producto
+﻿Imports System.Data
+
+Public Class Producto
     Private _id As String
     Public Property Id() As String
         Get
@@ -41,5 +43,11 @@
         Me.Descripcion = descripcion
         Me.Costo = costo
         Me.Precio = precio
+    End Sub
+    Sub New(fila As DataRowView)
+        'Me.Id = fila("Id")
+        Me.Descripcion = fila("Descripcion")
+        Me.Costo = fila("Costo")
+        Me.Precio = fila("Precio")
     End Sub
 End Class

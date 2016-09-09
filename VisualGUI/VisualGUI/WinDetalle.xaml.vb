@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 
 Public Class WinDetalle
+    Dim productoSelected As Producto
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winFactura As WinFactura = Me.Owner
         winFactura.Show()
@@ -19,7 +20,16 @@ Public Class WinDetalle
         Dim fila As DataRowView = sender.SelectedItem
         If (fila IsNot Nothing) Then
             txtProducto.Text = fila(1)
+            productoSelected = New Producto(fila)
         End If
 
+    End Sub
+
+    Private Sub txtCantidad_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtCantidad.TextChanged
+        Try
+            txtTotal.Text = productoSelected.Precio * txtCantidad.Text
+        Catch ex As Exception
+            MessageBox.Show("Favor ingrese números")
+        End Try
     End Sub
 End Class
