@@ -62,6 +62,7 @@ Public Class WinDetalle
 
             Me.Owner.DataContext = dsDetalle
             MessageBox.Show(winVendedor.NroFactura)
+            MessageBox.Show("Te sigo amando..")
         End Using
     End Sub
 End Class
