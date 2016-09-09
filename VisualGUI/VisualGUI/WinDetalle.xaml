@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DETALLE" Height="368.292" Width="326.016" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFFFDADA">
-        <DataGrid x:Name="dtgProducto" ItemsSource="{Binding Path=Item}" HorizontalAlignment="Left" Height="164" Margin="10,10,0,0" VerticalAlignment="Top" Width="298" Background="#FFEEF7FD"/>
+        <DataGrid x:Name="dtgProducto" ItemsSource="{Binding Path=Productos}" HorizontalAlignment="Left" Height="164" Margin="10,10,0,0" VerticalAlignment="Top" Width="298" Background="#FFEEF7FD"/>
         <Label x:Name="label" Content="Cantidad" HorizontalAlignment="Left" Height="27" Margin="67,212,0,0" VerticalAlignment="Top" Width="98" FontSize="16"/>
         <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="27" Margin="167,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
         <Label x:Name="label1" Content="Producto" HorizontalAlignment="Left" Height="28" Margin="67,179,0,0" VerticalAlignment="Top" Width="74" FontSize="16"/>

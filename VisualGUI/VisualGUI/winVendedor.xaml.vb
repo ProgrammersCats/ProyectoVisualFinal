@@ -4,6 +4,7 @@ Imports System.Data.OleDb
 Public Class winVendedor
     Public path As String = "..\..\..\BDEmpresa.accdb"
     Public dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
+    Public NroFactura As Integer
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Me.Hide()
         Me.Owner.Show()
@@ -25,10 +26,14 @@ Public Class winVendedor
             Dim sentencia As String = "Select * from Facturas"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
             dbAdapter.Fill(dsFactura, "Factura")
-
             dtgVendedor.DataContext = dsFactura
+            'MessageBox.Show(dsFactura.Tables("Factura").Rows.Count)
+            NroFactura = dsFactura.Tables("Factura").Rows(dsFactura.Tables("Factura").Rows.Count - 1)("Id") + 1
 
         End Using
+
+        'MessageBox.Show(NroFactura)
+
         'dtFactura.Columns.Add("Id")
         'dtFactura.Columns.Add("Fecha")
         'dtFactura.Columns.Add("Vendedor")

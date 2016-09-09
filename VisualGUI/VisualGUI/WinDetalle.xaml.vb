@@ -1,19 +1,29 @@
 ﻿Imports System.Data
+Imports System.Data.OleDb
 
 Public Class WinDetalle
     Dim productoSelected As Producto
+    Dim winFactura As WinFactura
+    Dim dsDetalle As DataSet
+    Public path As String = "..\..\..\BDEmpresa.accdb"
+    Public dbPath As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & path
     Private Sub Window_Closed(sender As Object, e As EventArgs)
-        Dim winFactura As WinFactura = Me.Owner
+        winFactura = Me.Owner
         winFactura.Show()
+        winFactura.DataContext = dsDetalle
         Me.Close()
 
     End Sub
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
-        Dim path As String = "../../productos.xml"
-        Dim dsProducto As New DataSet
-        dsProducto.ReadXml(path)
-        dtgProducto.DataContext = dsProducto
+        Using conexiondb As New OleDbConnection(dbPath)
+            Dim consulta As String = "Select * From Productos"
+            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, conexiondb))
+            Dim dsProducto As New DataSet
+            dbAdapter.Fill(dsProducto, "Productos")
+            dtgProducto.DataContext = dsProducto
+
+        End Using
     End Sub
 
     Private Sub dtgProducto_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgProducto.SelectionChanged
@@ -27,9 +37,31 @@ Public Class WinDetalle
 
     Private Sub txtCantidad_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtCantidad.TextChanged
         Try
+
             txtTotal.Text = productoSelected.Precio * txtCantidad.Text
+
         Catch ex As Exception
             MessageBox.Show("Favor ingrese números")
+            txtCantidad.Text = "0"
         End Try
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
+        Dim winVendedor As winVendedor = Me.Owner.Owner
+        Using dbConexion As New OleDbConnection(dbPath)
+            Dim dsDetalle As New DataSet
+            Dim dtDetalle As New DataTable("Detalle")
+            dtDetalle.Columns.Add("IdProducto")
+            dtDetalle.Columns.Add("IdFactura")
+            dtDetalle.Columns.Add("Producto")
+            dtDetalle.Columns.Add("Cantidad")
+            dtDetalle.Columns.Add("Total")
+
+            dtDetalle.Rows.Add(productoSelected.Id, txtCantidad.Text, txtTotal.Text, winVendedor.NroFactura)
+            dsDetalle.Tables.Add(dtDetalle)
+
+            Me.Owner.DataContext = dsDetalle
+            MessageBox.Show(winVendedor.NroFactura)
+        End Using
     End Sub
 End Class
