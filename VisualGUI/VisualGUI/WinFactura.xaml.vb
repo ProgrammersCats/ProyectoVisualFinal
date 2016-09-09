@@ -27,7 +27,7 @@ Public Class WinFactura
         txtFecha.Text = "24/08/2016"
         txtNmrFact.Text = "001"
         txtRuc.Text = "0987546855"
-        txtVendedor.Text = "Ricardo"
+        txtVendedor.Text = Me.DataContext.Nombre
         Dim dsDetalle As New DataSet
         Dim dtDetalle As New DataTable("Detalle")
 

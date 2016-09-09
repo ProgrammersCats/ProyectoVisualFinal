@@ -1,4 +1,5 @@
-﻿Imports System.Xml
+﻿Imports System.Data
+Imports System.Xml
 
 Public Class Usuario
     Private _id As Integer
@@ -89,6 +90,17 @@ Public Class Usuario
         Me.Contraseña = contraseña
         Me.Rol = rol
     End Sub
+    Public Sub New(fila As DataRow)
+        Me.Id = fila("Id")
+        Me.Nombre = fila("Nombre")
+        Me.Apellido = fila("Apellido")
+        Me.Telefono = fila("Telefono")
+        Me.Direccion = fila("Direccion")
+        Me.Usuario = fila("Usuario")
+        Me.Contraseña = fila("Contraseña")
+        Me.Rol = fila("Rol")
+    End Sub
+
 
 
 

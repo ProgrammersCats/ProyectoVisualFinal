@@ -10,7 +10,7 @@ Class winLogeo
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
             Dim dsUsuarios As New DataSet
             dbAdapter.Fill(dsUsuarios, "Usuarios")
-
+            Dim userLogeado As Usuario
 
             For Each fila As DataRow In dsUsuarios.Tables("Usuarios").Rows
 
@@ -18,11 +18,12 @@ Class winLogeo
                     'MessageBox.Show(fila("Rol"))
                     If fila("Rol") = "Admin" Then
                         flag = "a"
+                        userLogeado = New Usuario(fila)
 
                     End If
                     If fila("Rol") = "Vendedor" Then
                         flag = "v"
-
+                        userLogeado = New Usuario(fila)
                     End If
                     Exit For
                 End If
@@ -32,6 +33,7 @@ Class winLogeo
 
                 Dim winAdmin As New winAdmin
                 winAdmin.Owner = Me
+                winAdmin.DataContext = userLogeado
                 winAdmin.Show()
                 Me.Hide()
 
@@ -39,9 +41,11 @@ Class winLogeo
 
                 Dim winVendedor As New winVendedor
                 winVendedor.Owner = Me
+                winVendedor.DataContext = userLogeado
                 winVendedor.Show()
                 Me.Hide()
             Else
+                userLogeado = Nothing
                 MessageBox.Show("Usuario o contraseña incorrecta! TE AMO")
             End If
         End Using
