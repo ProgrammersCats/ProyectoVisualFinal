@@ -10,9 +10,16 @@ Public Class WinFactura
     Dim dsFactura As DataSet
     Dim factura As New Factura
     Private Sub Window_Closed(sender As Object, e As EventArgs)
-        Dim winVendedor As winVendedor = Me.Owner
-        winVendedor.Show()
+        If TypeOf Me.Owner Is winAdmin Then
+            Dim winAdmin As winAdmin = Me.Owner
+            winAdmin.Show()
+        ElseIf (TypeOf Me.Owner Is winVendedor) Then
+            Dim winVendedor As winVendedor = Me.Owner
+            winVendedor.Show()
+
+        End If
         Me.Close()
+
     End Sub
 
     Private Sub btnDetalle_Click(sender As Object, e As RoutedEventArgs) Handles btnDetalle.Click
@@ -32,51 +39,59 @@ Public Class WinFactura
     End Sub
 
     Public Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
-        Dim winVendedor As winVendedor = Me.Owner
-        Dim usuarioLogeado = Me.DataContext
-        'txtCliente.Text = "Kimmy"
-        txtFecha.Text = DateAndTime.Today
-        txtNmrFact.Text = winVendedor.NroFactura
-        'txtRuc.Text = "0987546855"
-        txtVendedor.Text = Me.DataContext.Nombre
-        factura.Vendedor = usuarioLogeado
-        'factura.Vendedor = Me.DataContext
 
-        dsDetalle = New DataSet()
-        Dim dtDetalle As New DataTable("Detalle")
-        dtDetalle.Columns.Add("Id")
-        dtDetalle.Columns.Add("Cantidad")
-        dtDetalle.Columns.Add("Total")
-        dtDetalle.Columns.Add("idFactura")
-        dsDetalle.Tables.Add(dtDetalle)
-        dtgDetalle.DataContext = dsDetalle
 
-        Using dbConexion As New OleDbConnection(dbPath)
-            Dim consulta As String = "Select * From Provincias"
-            Dim consulta2 As String = "Select * From Pagos"
-            Dim consulta3 As String = "Select * From Clientes"
-            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
-            Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
-            Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
-            dsComboBox = New DataSet("ComboBoxes")
-            dbAdapter.Fill(dsComboBox, "Provincias")
-            dbAdapter2.Fill(dsComboBox, "Pagos")
-            dbAdapter3.Fill(dsComboBox, "Clientes")
-            cmbNombre.Items.Clear()
-            cmbProvincia.Items.Clear()
-            cmbProvincia.Items.Clear()
 
-            For Each cat As DataRow In dsComboBox.Tables("Provincias").Rows
-                cmbProvincia.Items.Add(cat(1))
-            Next
-            For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
-                cmbTipoPago.Items.Add(cat(1))
-            Next
-            For Each cat As DataRow In dsComboBox.Tables("Clientes").Rows
-                cmbNombre.Items.Add(cat(4))
-            Next
-        End Using
+        If TypeOf Me.Owner Is winAdmin Then
+            MessageBox.Show("holaA")
+        ElseIf (TypeOf Me.Owner Is winVendedor) Then
+            MessageBox.Show("holaV")
 
+            Dim winVendedor As winVendedor = Me.Owner
+            Dim usuarioLogeado = Me.DataContext
+            'txtCliente.Text = "Kimmy"
+            txtFecha.Text = DateAndTime.Today
+            txtNmrFact.Text = winVendedor.NroFactura
+            'txtRuc.Text = "0987546855"
+            txtVendedor.Text = Me.DataContext.Nombre
+            factura.Vendedor = usuarioLogeado
+            'factura.Vendedor = Me.DataContext
+
+            dsDetalle = New DataSet()
+            Dim dtDetalle As New DataTable("Detalle")
+            dtDetalle.Columns.Add("Id")
+            dtDetalle.Columns.Add("Cantidad")
+            dtDetalle.Columns.Add("Total")
+            dtDetalle.Columns.Add("idFactura")
+            dsDetalle.Tables.Add(dtDetalle)
+            dtgDetalle.DataContext = dsDetalle
+
+            Using dbConexion As New OleDbConnection(dbPath)
+                Dim consulta As String = "Select * From Provincias"
+                Dim consulta2 As String = "Select * From Pagos"
+                Dim consulta3 As String = "Select * From Clientes"
+                Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
+                Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
+                Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
+                dsComboBox = New DataSet("ComboBoxes")
+                dbAdapter.Fill(dsComboBox, "Provincias")
+                dbAdapter2.Fill(dsComboBox, "Pagos")
+                dbAdapter3.Fill(dsComboBox, "Clientes")
+                cmbNombre.Items.Clear()
+                cmbProvincia.Items.Clear()
+                cmbProvincia.Items.Clear()
+
+                For Each cat As DataRow In dsComboBox.Tables("Provincias").Rows
+                    cmbProvincia.Items.Add(cat(1))
+                Next
+                For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
+                    cmbTipoPago.Items.Add(cat(1))
+                Next
+                For Each cat As DataRow In dsComboBox.Tables("Clientes").Rows
+                    cmbNombre.Items.Add(cat(4))
+                Next
+            End Using
+        End If
 
         'dsDetalle = Me.DataContext
         'dtgDetalle.DataContext = dsDetalle

@@ -56,10 +56,10 @@ Public Class WinProducto
                         fila.Delete()
                         Try
                             dbAdapter.Update(dsProductos.Tables("Productos"))
-                            MessageBox.Show("Guardado Exitoso")
+                            MessageBox.Show("Eliminación Exitosa")
 
                         Catch ex As Exception
-                            MessageBox.Show("Guardado Falló")
+                            MessageBox.Show("Eliminación Falló")
                         End Try
 
                     End If

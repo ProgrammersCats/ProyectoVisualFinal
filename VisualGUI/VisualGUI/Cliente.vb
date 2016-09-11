@@ -58,12 +58,13 @@ Public Class Cliente
     Public Sub New()
 
     End Sub
-    Public Sub New(id As Integer, nombre As String, apellido As String, telefono As String, direccion As String)
+    Public Sub New(id As Integer, nombre As String, apellido As String, direccion As String, telefono As String, ruc As String)
         Me.Id = id
         Me.Nombre = nombre
         Me.Apellido = apellido
         Me.Telefono = telefono
         Me.Direccion = direccion
+        Me.Ruc = ruc
     End Sub
     Public Sub New(fila As DataRow)
         Me.Id = fila("Id")

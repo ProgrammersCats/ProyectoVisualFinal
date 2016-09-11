@@ -14,14 +14,16 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="704" Margin="5,0,0,0" Background="#FFD6FFE1">
-            <MenuItem x:Name="btnProductos" Header="Productos" Height="29" Width="152" FontSize="20" Click="MenuItem_Click_1" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
-            <MenuItem x:Name="btnUsuarios" Header="Usuarios" Width="189" FontSize="20" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
-            <MenuItem x:Name="btnProvinvias" Header="Provincias" Width="169" FontSize="20" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
+            <MenuItem x:Name="btnProductos" Header="Productos" Height="29" Width="125" FontSize="20" Click="MenuItem_Click_1" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
+            <MenuItem x:Name="btnUsuarios" Header="Usuarios" Width="115" FontSize="20" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
+            <MenuItem x:Name="btnProvinvias" Header="Provincias" Width="133" FontSize="20" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
             <MenuItem x:Name="btnPago" Header="Tipo de pago" Click="MenuItem_Click" Width="184" FontSize="20" FontFamily="Verdana" Background="#FF298B79" Foreground="White"/>
+            <MenuItem x:Name="btnFacturas" Header="Facturas" Width="137" Background="#FF298B79" FontFamily="Verdana" FontSize="20" Foreground="White"/>
         </Menu>
         <DataGrid x:Name="dtgProductos" ItemsSource="{Binding Path=Productos}" HorizontalAlignment="Left" Height="290" Margin="10,44,0,0" VerticalAlignment="Top" Width="689" Background="#FFFFE3E3" FontSize="16" FontFamily="Sylfaen"/>
         <DataGrid x:Name="dtgUsuarios" ItemsSource="{Binding Path=Usuarios}" HorizontalAlignment="Left" Height="269" Margin="10,65,0,0" VerticalAlignment="Top" Width="689" Background="#FFF7EFD2" FontSize="16" FontFamily="Sylfaen"/>
         <DataGrid x:Name="dtgProvincias" ItemsSource="{Binding Path=Provincias}" HorizontalAlignment="Left" Height="238" Margin="10,96,0,0" VerticalAlignment="Top" Width="689" Background="#FFD6ECD7" FontSize="16" FontFamily="Sylfaen"/>
         <DataGrid x:Name="dtgPagos" ItemsSource="{Binding Path=Pagos}" HorizontalAlignment="Left" Height="211" Margin="10,123,0,0" VerticalAlignment="Top" Width="689" Background="#FFDBD5FF" FontSize="16" FontFamily="Sylfaen"/>
+        <DataGrid x:Name="dtgFacturas" ItemsSource="{Binding Path=Facturas}" HorizontalAlignment="Left" Height="189" Margin="9,145,0,0" VerticalAlignment="Top" Width="690"/>
     </Grid>
 </Window>

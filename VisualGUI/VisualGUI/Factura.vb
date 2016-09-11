@@ -88,7 +88,7 @@
     Private _devolucion As Double
     Public Property Devolucion() As Double
         Get
-            Return (Me.Total * _devolucion) / 100
+            Return (Me.Total * Me.TipoPago.Valor) / 100
         End Get
         Set(ByVal value As Double)
             _devolucion = value
@@ -120,5 +120,14 @@
     End Sub
     Public Sub agregarDetalle(detalle As DetalleFactura)
         Me.Detalles.Add(detalle)
+    End Sub
+    Public Sub New(id As Integer, fecha As String, cli As Cliente, ven As Usuario, emi As Provincia, pago As Pagos)
+        Me.NumeroFactura = id
+        Me.Fecha = fecha
+        Me.Cliente = cli
+        Me.Vendedor = ven
+        Me.LugarEmision = emi
+        Me.TipoPago = pago
+        ', subtotal As Double, iva As Double, total As Double, devolucion As Double, totalPagar As Double
     End Sub
 End Class
