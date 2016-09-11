@@ -112,7 +112,7 @@ Public Class WinFactura
                 If cmbNombre.SelectedValue = fila(4) Then
                     cliente = New Cliente(fila)
                     factura.Cliente = cliente
-                    MessageBox.Show("lleno Cliente")
+                    'MessageBox.Show("lleno Cliente")
                     Exit For
                 End If
             Next
@@ -120,7 +120,7 @@ Public Class WinFactura
                 If cmbProvincia.SelectedValue = fila("Nombre") Then
                     provincia = New Provincia(fila)
                     factura.LugarEmision = provincia
-                    MessageBox.Show("lleno Provincia")
+                    ' MessageBox.Show("lleno Provincia")
                     Exit For
                 End If
             Next
@@ -128,7 +128,7 @@ Public Class WinFactura
                 If cmbTipoPago.SelectedValue = fila(1) Then
                     tipoDePago = New Pagos(fila)
                     factura.TipoPago = tipoDePago
-                    MessageBox.Show("lleno Tipo de Pago")
+                    'MessageBox.Show("lleno Tipo de Pago")
                     Exit For
                 End If
             Next
@@ -154,9 +154,10 @@ Public Class WinFactura
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
         Using dbConexion As New OleDbConnection(dbPath)
-            Dim flag As Boolean
+            Dim flag As Boolean = False
             Dim dbConsulta As String = "Select * from Facturas"
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(dbConsulta, dbConexion))
+            Dim personaCmdBuilder = New OleDbCommandBuilder(dbAdapter)
             dsFactura = New DataSet
             dbAdapter.Fill(dsFactura, "Facturas")
             For Each fila As DataRow In dsFactura.Tables("Facturas").Rows
@@ -170,12 +171,25 @@ Public Class WinFactura
                     fila("Devolucion") = CDbl(txtDevolucion.Text)
                     fila("TotalPagar") = CDbl(txtTotalPagar.Text)
                     flag = True
+                    'MessageBox.Show("coincidencia")
                     Exit For
                 End If
             Next
             If Not flag Then
                 dsFactura.Tables("Facturas").Rows.Add(txtNmrFact.Text, txtFecha.Text, CDbl(factura.Cliente.Id), CDbl(factura.Vendedor.Id), CDbl(txtSubtotal.Text), CDbl(txtIva.Text), CDbl(txtTotal.Text), CDbl(txtDevolucion.Text), CDbl(txtTotalPagar.Text))
+                'MessageBox.Show("asfaqweqe")
             End If
+            'MessageBox.Show(txtNmrFact.Text)
+            'MessageBox.Show(txtFecha.Text)
+            'MessageBox.Show(factura.Cliente.Id)
+            'MessageBox.Show(factura.Cliente.Id)
+            'MessageBox.Show(txtSubtotal.Text)
+            'MessageBox.Show(txtIva.Text)
+            'MessageBox.Show(txtTotal.Text)
+            'MessageBox.Show(txtDevolucion.Text)
+            'MessageBox.Show(txtTotalPagar.Text)
+            'MessageBox.Show(flag)
+            'dbAdapter.Update(dsFactura.Tables("Facturas"))
             Try
                 dbAdapter.Update(dsFactura.Tables("Facturas"))
                 MessageBox.Show("Guardado Exitoso")
