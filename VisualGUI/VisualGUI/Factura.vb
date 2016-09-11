@@ -64,7 +64,6 @@
             For Each det As DetalleFactura In Me.Detalles
                 subT += det.TotalDetalle
             Next
-            MessageBox.Show(subT)
             Return subT
         End Get
 

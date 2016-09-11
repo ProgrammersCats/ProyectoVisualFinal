@@ -100,6 +100,16 @@ Public Class Usuario
         Me.Contraseña = fila("Contraseña")
         Me.Rol = fila("Rol")
     End Sub
+    Public Sub New(user As Usuario)
+        Me.Id = user.Id
+        Me.Nombre = user.Nombre
+        Me.Apellido = user.Apellido
+        Me.Telefono = user.Telefono
+        Me.Direccion = user.Direccion
+        Me.Usuario = user.Usuario
+        Me.Contraseña = user.Contraseña
+        Me.Rol = user.Rol
+    End Sub
 
 
 

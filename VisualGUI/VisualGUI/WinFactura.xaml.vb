@@ -7,6 +7,8 @@ Public Class WinFactura
     'Dim winVendedor As winVendedor = Me.Owner
     Dim dsDetalle As DataSet
     Dim dsComboBox As DataSet
+    Dim dsFactura As DataSet
+    Dim factura As New Factura
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         Dim winVendedor As winVendedor = Me.Owner
         winVendedor.Show()
@@ -31,11 +33,14 @@ Public Class WinFactura
 
     Public Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
         Dim winVendedor As winVendedor = Me.Owner
+        Dim usuarioLogeado = Me.DataContext
         'txtCliente.Text = "Kimmy"
         txtFecha.Text = DateAndTime.Today
         txtNmrFact.Text = winVendedor.NroFactura
         'txtRuc.Text = "0987546855"
         txtVendedor.Text = Me.DataContext.Nombre
+        factura.Vendedor = usuarioLogeado
+        'factura.Vendedor = Me.DataContext
 
         dsDetalle = New DataSet()
         Dim dtDetalle As New DataTable("Detalle")
@@ -96,12 +101,13 @@ Public Class WinFactura
     End Sub
 
     Private Sub btnCalcular_Click(sender As Object, e As RoutedEventArgs) Handles btnCalcular.Click
-        Dim factura As New Factura
+
         Dim cliente As Cliente
         Dim provincia As Provincia
         Dim tipoDePago As Pagos
 
         Try
+
             For Each fila As DataRow In dsComboBox.Tables("Clientes").Rows
                 If cmbNombre.SelectedValue = fila(4) Then
                     cliente = New Cliente(fila)
@@ -144,5 +150,39 @@ Public Class WinFactura
         Catch ex As Exception
             MessageBox.Show("Llene todos lo campos")
         End Try
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
+        Using dbConexion As New OleDbConnection(dbPath)
+            Dim flag As Boolean
+            Dim dbConsulta As String = "Select * from Facturas"
+            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(dbConsulta, dbConexion))
+            dsFactura = New DataSet
+            dbAdapter.Fill(dsFactura, "Facturas")
+            For Each fila As DataRow In dsFactura.Tables("Facturas").Rows
+                If fila(0) = txtNmrFact.Text Then
+                    fila("Fecha") = txtFecha.Text
+                    fila("idCliente") = CDbl(factura.Cliente.Id)
+                    fila("idVendedor") = CDbl(factura.Vendedor.Id)
+                    fila("Subtotal") = CDbl(txtSubtotal.Text)
+                    fila("Iva") = CDbl(txtIva.Text)
+                    fila("Total") = CDbl(txtTotal.Text)
+                    fila("Devolucion") = CDbl(txtDevolucion.Text)
+                    fila("TotalPagar") = CDbl(txtTotalPagar.Text)
+                    flag = True
+                    Exit For
+                End If
+            Next
+            If Not flag Then
+                dsFactura.Tables("Facturas").Rows.Add(txtNmrFact.Text, txtFecha.Text, CDbl(factura.Cliente.Id), CDbl(factura.Vendedor.Id), CDbl(txtSubtotal.Text), CDbl(txtIva.Text), CDbl(txtTotal.Text), CDbl(txtDevolucion.Text), CDbl(txtTotalPagar.Text))
+            End If
+            Try
+                dbAdapter.Update(dsFactura.Tables("Facturas"))
+                MessageBox.Show("Guardado Exitoso")
+
+            Catch ex As Exception
+                MessageBox.Show("Guardado Falló")
+            End Try
+        End Using
     End Sub
 End Class
