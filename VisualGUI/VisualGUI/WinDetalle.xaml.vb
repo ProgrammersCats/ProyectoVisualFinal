@@ -12,7 +12,6 @@ Public Class WinDetalle
         winFactura.Show()
         winFactura.DataContext = dsDetalle
         Me.Close()
-
     End Sub
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
@@ -22,7 +21,6 @@ Public Class WinDetalle
             Dim dsProducto As New DataSet
             dbAdapter.Fill(dsProducto, "Productos")
             dtgProducto.DataContext = dsProducto
-
         End Using
 
         If (TypeOf Me.DataContext Is DataRowView) Then
@@ -31,8 +29,6 @@ Public Class WinDetalle
             txtPrecioUnitario.Text = fila("PrecioUnitario")
             txtCantidad.Text = fila("Cantidad")
             txtTotal.Text = fila("Total")
-
-            'dtgProducto.SelectedIndex
         End If
     End Sub
 
@@ -48,9 +44,7 @@ Public Class WinDetalle
 
     Private Sub txtCantidad_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtCantidad.TextChanged
         Try
-
             txtTotal.Text = productoSelected.Precio * txtCantidad.Text
-
         Catch ex As Exception
             MessageBox.Show("Favor ingrese números")
             txtCantidad.Text = "0"
@@ -58,18 +52,8 @@ Public Class WinDetalle
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
-        'Dim winVendedor As winVendedor = Me.Owner.Owner
         Dim winFactura As WinFactura = Me.Owner
-        'Dim dtDetalle = winFactura.DataContext
         dsDetalle = Me.DataContext
-        'Using dbConexion As New OleDbConnection(dbPath)
-        'Dim dsDetalle As New DataSet
-        '    Dim dtDetalle As New DataTable("Detalle")
-        '    dtDetalle.Columns.Add("IdProducto")
-        '    dtDetalle.Columns.Add("IdFactura")
-        '    dtDetalle.Columns.Add("Producto")
-        '    dtDetalle.Columns.Add("Cantidad")
-        '    dtDetalle.Columns.Add("Total")
         If TypeOf Me.DataContext Is DataRowView Then
             Dim fila As DataRowView = Me.DataContext
             Dim dsDetalle2 As DataSet = winFactura.dsDetalle
@@ -82,20 +66,16 @@ Public Class WinDetalle
                     Exit For
                 End If
             Next
-
             winFactura.dtgDetalle.DataContext = dsDetalle2
             Me.Owner.DataContext = dsDetalle2
         Else
-            dsDetalle.Tables("Detalle").Rows.Add(0, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
-
+            dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
             winFactura.dtgDetalle.DataContext = dsDetalle
             Me.Owner.DataContext = dsDetalle
         End If
-
         MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
         winFactura.Show()
         Me.Close()
-        'End Using
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As RoutedEventArgs) Handles btnEliminar.Click
@@ -112,6 +92,5 @@ Public Class WinDetalle
         MessageBox.Show("Se eliminó el detalle, Cerrando ventana..")
         winFactura.Show()
         Me.Close()
-
     End Sub
 End Class

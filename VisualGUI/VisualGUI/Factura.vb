@@ -8,6 +8,7 @@
             _numeroFactura = value
         End Set
     End Property
+
     Private _fecha As String
     Public Property Fecha() As String
         Get
@@ -17,7 +18,6 @@
             _fecha = value
         End Set
     End Property
-
 
     Private _cliente As Cliente
     Public Property Cliente() As Cliente
@@ -39,8 +39,6 @@
         End Set
     End Property
 
-
-
     Private _lugarEmi As Provincia
     Public Property LugarEmision() As Provincia
         Get
@@ -50,7 +48,6 @@
             _lugarEmi = value
         End Set
     End Property
-
 
     Private _detalles As New ArrayList()
     Public Property Detalles() As ArrayList
@@ -89,6 +86,7 @@
         End Get
 
     End Property
+
     Private _tipoPago As Pagos
     Public Property TipoPago() As Pagos
         Get
@@ -98,6 +96,7 @@
             _tipoPago = value
         End Set
     End Property
+
     Private _devolucion As Double
     Public Property Devolucion() As Double
         Get
@@ -107,7 +106,6 @@
             _devolucion = value
         End Set
     End Property
-
 
     Private _totalPagar As Double
     Public ReadOnly Property TotalPagar() As Double
@@ -133,7 +131,6 @@
         Me.Vendedor = ven
         Me.LugarEmision = emi
         Me.TipoPago = pago
-        ', subtotal As Double, iva As Double, total As Double, devolucion As Double, totalPagar As Double
     End Sub
 
     Friend Sub limpiarDetalle()

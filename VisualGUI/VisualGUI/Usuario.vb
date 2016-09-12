@@ -11,6 +11,7 @@ Public Class Usuario
             _id = value
         End Set
     End Property
+
     Private _nombre As String
     Public Property Nombre() As String
         Get
@@ -30,6 +31,7 @@ Public Class Usuario
             _apellido = value
         End Set
     End Property
+
     Private _direccion As String
     Public Property Direccion() As String
         Get
@@ -39,6 +41,7 @@ Public Class Usuario
             _direccion = value
         End Set
     End Property
+
     Private _telefono As String
     Public Property Telefono() As String
         Get
@@ -48,6 +51,7 @@ Public Class Usuario
             _telefono = value
         End Set
     End Property
+
     Private _usuario As String
     Public Property Usuario() As String
         Get
@@ -57,6 +61,7 @@ Public Class Usuario
             _usuario = value
         End Set
     End Property
+
     Private _contraseña As String
     Public Property Contraseña() As String
         Get
@@ -66,6 +71,7 @@ Public Class Usuario
             _contraseña = value
         End Set
     End Property
+
     Private _rol As String
     Public Property Rol() As String
         Get
@@ -110,8 +116,4 @@ Public Class Usuario
         Me.Contraseña = user.Contraseña
         Me.Rol = user.Rol
     End Sub
-
-
-
-
 End Class

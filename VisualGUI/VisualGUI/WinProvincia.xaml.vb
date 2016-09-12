@@ -21,7 +21,6 @@ Public Class WinProvincia
             dbAdapter.Fill(dsProvinvia, "Provincia")
             For Each fila As DataRow In dsProvinvia.Tables("Provincia").Rows
                 If (fila(0) = txtId.Text) Then
-                    'fila(0) = txtId.Text
                     fila(1) = txtNombre.Text
                     fila(2) = txtCapital.Text
                     fila(3) = txtIva.Text
@@ -52,7 +51,6 @@ Public Class WinProvincia
             dbAdapter.Fill(dsProvinvia, "Provincia")
             For Each fila As DataRow In dsProvinvia.Tables("Provincia").Rows
                 If (fila(0) = txtId.Text) Then
-
                     If MessageBox.Show("Seguro desea eliminar la provincia", "Eliminación",
                      MessageBoxButton.YesNo, MessageBoxImage.Question) _
                      = MessageBoxResult.Yes Then
@@ -68,9 +66,6 @@ Public Class WinProvincia
                     Exit For
                 End If
             Next
-
-
-
         End Using
         Me.Window_Closed(Nothing, Nothing)
     End Sub

@@ -11,15 +11,11 @@ Class winLogeo
             Dim dsUsuarios As New DataSet
             dbAdapter.Fill(dsUsuarios, "Usuarios")
             Dim userLogeado As Usuario
-
             For Each fila As DataRow In dsUsuarios.Tables("Usuarios").Rows
-
                 If (Me.txtUser.Text.Equals(fila(1)) AndAlso Me.txtPass.Password.Equals(fila(2))) Then
-                    'MessageBox.Show(fila("Rol"))
                     If fila("Rol") = "Admin" Then
                         flag = "a"
                         userLogeado = New Usuario(fila)
-
                     End If
                     If fila("Rol") = "Vendedor" Then
                         flag = "v"
@@ -30,15 +26,12 @@ Class winLogeo
             Next
 
             If (flag.Equals("a")) Then
-
                 Dim winAdmin As New winAdmin
                 winAdmin.Owner = Me
                 winAdmin.DataContext = userLogeado
                 winAdmin.Show()
                 Me.Hide()
-
             ElseIf (flag.Equals("v")) Then
-
                 Dim winVendedor As New winVendedor
                 winVendedor.Owner = Me
                 winVendedor.DataContext = userLogeado
@@ -49,8 +42,6 @@ Class winLogeo
                 MessageBox.Show("Usuario o contraseña incorrecta! TE AMO")
             End If
         End Using
-
-
     End Sub
 
     Private Sub btnCerrar_Click(sender As Object, e As RoutedEventArgs) Handles btnCerrar.Click

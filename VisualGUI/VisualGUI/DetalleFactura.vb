@@ -63,7 +63,6 @@ Public Class DetalleFactura
             Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
             Dim dsProductos As New DataSet("Productos")
             dbAdapter.Fill(dsProductos, "Productos")
-            'MessageBox.Show(fila(1))
             For Each filaProd As DataRow In dsProductos.Tables("Productos").Rows
                 If filaProd("Descripcion").Equals(fila("Producto")) Then
                     producto = New Producto(filaProd)
@@ -72,7 +71,5 @@ Public Class DetalleFactura
                 End If
             Next
         End Using
-        MessageBox.Show(Me.Item.Precio)
-
     End Sub
 End Class

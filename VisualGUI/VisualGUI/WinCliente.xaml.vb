@@ -9,7 +9,6 @@ Public Class WinCliente
         winFactura.Window_Loaded(Nothing, Nothing)
         winFactura.Show()
         Me.Close()
-
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles BtnGuardar.Click
@@ -22,7 +21,6 @@ Public Class WinCliente
             dbAdapter.Fill(dsClientes, "Clientes")
             For Each fila As DataRow In dsClientes.Tables("Clientes").Rows
                 If (fila(0) = txtId.Text) Then
-                    'fila(0) = txtId.Text
                     fila(4) = txtNombre.Text
                     fila(1) = txtApellido.Text
                     fila(2) = txtDireccion.Text
