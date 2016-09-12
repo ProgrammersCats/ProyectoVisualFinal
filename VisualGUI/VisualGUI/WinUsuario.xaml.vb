@@ -12,37 +12,42 @@ Public Class WinUsuario
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
-        Dim flag = False
-        Dim winAdmin As winAdmin = Me.Owner
-        Using dbConexion As New OleDbConnection(winAdmin.dbPath)
-            Dim sentencia As String = "Select * from Usuarios"
-            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
-            Dim personaCmdBuilder As New OleDbCommandBuilder(dbAdapter)
-            Dim dsUsuarios As New DataSet
-            dbAdapter.Fill(dsUsuarios, "Usuarios")
-            For Each fila As DataRow In dsUsuarios.Tables("Usuarios").Rows
-                If (fila(0) = txtId.Text) Then
-                    fila("Usuario") = txtUser.Text
-                    fila("Contraseña") = txtPass.Text
-                    fila("Nombre") = txtNombre.Text
-                    fila("Apellido") = txtApellido.Text
-                    fila("Telefono") = txtTelefono.Text
-                    fila("Direccion") = txtDireccion.Text
-                    fila("Rol") = txtRol.Text
-                    flag = True
-                    Exit For
+        Try
+            Dim flag = False
+            Dim winAdmin As winAdmin = Me.Owner
+            Using dbConexion As New OleDbConnection(winAdmin.dbPath)
+                Dim sentencia As String = "Select * from Usuarios"
+                Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
+                Dim personaCmdBuilder As New OleDbCommandBuilder(dbAdapter)
+                Dim dsUsuarios As New DataSet
+                dbAdapter.Fill(dsUsuarios, "Usuarios")
+                For Each fila As DataRow In dsUsuarios.Tables("Usuarios").Rows
+                    If (fila(0) = txtId.Text) Then
+                        fila("Usuario") = txtUser.Text
+                        fila("Contraseña") = txtPass.Text
+                        fila("Nombre") = txtNombre.Text
+                        fila("Apellido") = txtApellido.Text
+                        fila("Telefono") = txtTelefono.Text
+                        fila("Direccion") = txtDireccion.Text
+                        fila("Rol") = txtRol.Text
+                        flag = True
+                        Exit For
+                    End If
+                Next
+                If (Not flag) Then
+                    dsUsuarios.Tables("Usuarios").Rows.Add(txtId.Text, txtUser.Text, txtPass.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtDireccion.Text, txtRol.Text)
                 End If
-            Next
-            If (Not flag) Then
-                dsUsuarios.Tables("Usuarios").Rows.Add(txtId.Text, txtUser.Text, txtPass.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtDireccion.Text, txtRol.Text)
-            End If
-            Try
-                dbAdapter.Update(dsUsuarios.Tables("Usuarios"))
-                MessageBox.Show("Guardado Exitoso")
-            Catch ex As Exception
-                MessageBox.Show("Guardado Falló")
-            End Try
-        End Using
+                Try
+                    dbAdapter.Update(dsUsuarios.Tables("Usuarios"))
+                    MessageBox.Show("Guardado Exitoso")
+                Catch ex As Exception
+                    MessageBox.Show("Guardado Falló")
+                End Try
+            End Using
+            Me.Window_Closed(Nothing, Nothing)
+        Catch ex As Exception
+            MessageBox.Show("Escriba correctamente")
+        End Try
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As RoutedEventArgs) Handles btnEliminar.Click
@@ -72,5 +77,6 @@ Public Class WinUsuario
             Next
 
         End Using
+        Me.Window_Closed(Nothing, Nothing)
     End Sub
 End Class

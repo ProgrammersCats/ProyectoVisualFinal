@@ -22,8 +22,13 @@ Public Class WinFactura
     End Sub
 
     Private Sub btnDetalle_Click(sender As Object, e As RoutedEventArgs) Handles btnDetalle.Click
+        btnCalcular.IsEnabled = True
+        dtgDetalle.IsEnabled = True
+        btnGuardar.IsEnabled = False
+
         Dim winDetalle As New WinDetalle
         winDetalle.Owner = Me
+        dsDetalle = dtgDetalle.DataContext
         winDetalle.DataContext = dsDetalle
         winDetalle.Show()
         Me.Hide()
@@ -73,7 +78,14 @@ Public Class WinFactura
             btnGuardar.IsEnabled = False
             cmbProvincia.IsEnabled = False
             cmbTipoPago.IsEnabled = False
-
+            dtgDetalle.IsEnabled = False
+            Using dbConexion As New OleDbConnection(dbPath)
+                Dim sentencia As String = "Select * from Detalles where idFactura=" & fila(0)
+                Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
+                Dim dsDetalles As New DataSet
+                dbAdapter.Fill(dsDetalles, "Detalle")
+                dtgDetalle.DataContext = dsDetalles
+            End Using
         ElseIf (TypeOf Me.Owner Is winVendedor) Then
             Dim winVendedor As winVendedor = Me.Owner
             Dim usuarioLogeado = Me.DataContext
@@ -81,6 +93,13 @@ Public Class WinFactura
             txtNmrFact.Text = winVendedor.NroFactura
             txtVendedor.Text = Me.DataContext.Nombre
             factura.Vendedor = usuarioLogeado
+
+            txtNmrFact.IsEnabled = False
+            txtRuc.IsEnabled = False
+            txtVendedor.IsEnabled = False
+            txtFecha.IsEnabled = False
+            btnCalcular.IsEnabled = False
+            dtgDetalle.IsEnabled = False
 
             dsDetalle = New DataSet()
             Dim dtDetalle As New DataTable("Detalle")
@@ -149,62 +168,88 @@ Public Class WinFactura
                 End If
             Next
             factura.limpiarDetalle()
-            For Each fila As DataRow In dsDetalle.Tables("Detalle").Rows
-                Dim detalle As New DetalleFactura(fila)
-                factura.agregarDetalle(detalle)
-            Next
+            'If (TypeOf Me.DataContext Is DataRowView) Then
+            '    dsDetalle = dtgDetalle.DataContext
+            'Else
+            '    dsDetalle = Me.DataContext
+            'End If
+            dsDetalle = dtgDetalle.DataContext
+            If (dtgDetalle.DataContext Is Nothing) Then
+                MessageBox.Show("No hay detalles")
+            Else
+                For Each fila As DataRow In dsDetalle.Tables("Detalle").Rows
+                    Dim detalle As New DetalleFactura(fila)
+                    factura.agregarDetalle(detalle)
+                Next
 
+
+                btnGuardar.IsEnabled = True
+            End If
             txtSubtotal.Text = factura.Subtotal
             txtIva.Text = factura.IVA
             txtTotal.Text = factura.Total
             txtDevolucion.Text = factura.Devolucion
             txtTotalPagar.Text = factura.TotalPagar
-            btnGuardar.IsEnabled = True
         Catch ex As Exception
             MessageBox.Show("Llene todos lo campos")
         End Try
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
-        Using dbConexion As New OleDbConnection(dbPath)
-            'Dim flag As Boolean = False
-            Dim dbConsulta As String = "Select * from Facturas"
-            Dim sentencia As String = "Select * from Detalles"
-            Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(dbConsulta, dbConexion))
-            Dim dbAdapterD As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
-            Dim personaCmdBuilder = New OleDbCommandBuilder(dbAdapter)
-            Dim personaCmdBuilderD = New OleDbCommandBuilder(dbAdapterD)
-            dsFactura = New DataSet
-            Dim dsDetallesBD As New DataSet
-            dbAdapterD.Fill(dsDetallesBD, "Detalle")
-            dbAdapter.Fill(dsFactura, "Facturas")
+        Try
 
-            dsFactura.Tables("Facturas").Rows.Add(txtNmrFact.Text, txtFecha.Text, factura.Cliente.Nombre, factura.Cliente.Ruc, factura.Vendedor.Nombre, factura.LugarEmision.Nombre, factura.TipoPago.Tipo, CDbl(txtSubtotal.Text), CDbl(txtIva.Text), CDbl(txtTotal.Text), CDbl(txtDevolucion.Text), CDbl(txtTotalPagar.Text))
-            For Each detalles As DataRow In dsDetalle.Tables("Detalle").Rows
 
-                dsDetallesBD.Tables("Detalle").ImportRow(detalles)
-            Next
-            dbAdapterD.Update(dsDetallesBD.Tables("Detalle"))
+            Using dbConexion As New OleDbConnection(dbPath)
+                'Dim flag As Boolean = False
+                Dim dbConsulta As String = "Select * from Facturas"
+                Dim sentencia As String = "Select * from Detalles"
+                Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(dbConsulta, dbConexion))
+                Dim dbAdapterD As New OleDbDataAdapter(New OleDbCommand(sentencia, dbConexion))
+                Dim personaCmdBuilder = New OleDbCommandBuilder(dbAdapter)
+                Dim personaCmdBuilderD = New OleDbCommandBuilder(dbAdapterD)
+                dsFactura = New DataSet
+                Dim dsDetallesBD As New DataSet
+                dbAdapterD.Fill(dsDetallesBD, "Detalle")
+                dbAdapter.Fill(dsFactura, "Facturas")
+                dsDetalle = Me.DataContext
+                If (dsDetalle Is Nothing) Then
+                    MessageBox.Show("No hay detalles")
+                Else
+                    dsFactura.Tables("Facturas").Rows.Add(txtNmrFact.Text, txtFecha.Text, factura.Cliente.Nombre, factura.Cliente.Ruc, factura.Vendedor.Nombre, factura.LugarEmision.Nombre, factura.TipoPago.Tipo, CDbl(txtSubtotal.Text), CDbl(txtIva.Text), CDbl(txtTotal.Text), CDbl(txtDevolucion.Text), CDbl(txtTotalPagar.Text))
+                    For Each detalles As DataRow In dsDetalle.Tables("Detalle").Rows
 
-            Try
-                dbAdapter.Update(dsFactura.Tables("Facturas"))
-                MessageBox.Show("Guardado Exitoso")
-                Me.Window_Closed(Nothing, Nothing)
-            Catch ex As Exception
-                MessageBox.Show("Guardado Falló")
-            End Try
-        End Using
+                        dsDetallesBD.Tables("Detalle").ImportRow(detalles)
+                    Next
+                    dbAdapterD.Update(dsDetallesBD.Tables("Detalle"))
+
+                    Try
+                        dbAdapter.Update(dsFactura.Tables("Facturas"))
+                        MessageBox.Show("Guardado Exitoso")
+                        Me.Window_Closed(Nothing, Nothing)
+                    Catch ex As Exception
+                        MessageBox.Show("Guardado Falló")
+                    End Try
+                End If
+
+
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Llene todos los campos")
+        End Try
     End Sub
 
     Private Sub dtgDetalle_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgDetalle.SelectionChanged
-        Dim fila As DataRowView = sender.SelectedItem
-        If fila IsNot Nothing Then
-            Dim winDetalle As New WinDetalle
-            winDetalle.Owner = Me
-            winDetalle.DataContext = fila
-            winDetalle.Show()
-            Me.Hide()
 
+        If TypeOf sender.SelectedItem Is DataRowView Then
+            Dim fila As DataRowView = sender.SelectedItem
+            If fila IsNot Nothing Then
+                btnGuardar.IsEnabled = False
+                Dim winDetalle As New WinDetalle
+                winDetalle.Owner = Me
+                winDetalle.DataContext = fila
+                winDetalle.Show()
+                Me.Hide()
+            End If
         End If
     End Sub
 

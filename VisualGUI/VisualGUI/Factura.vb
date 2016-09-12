@@ -100,7 +100,7 @@
     Private _devolucion As Double
     Public Property Devolucion() As Double
         Get
-            Return (Me.Total * Me.TipoPago.Valor) / 100
+            Return (Me.IVA * Me.TipoPago.Valor) / 100
         End Get
         Set(ByVal value As Double)
             _devolucion = value

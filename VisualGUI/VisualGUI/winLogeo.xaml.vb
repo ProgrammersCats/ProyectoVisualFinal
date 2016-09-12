@@ -47,4 +47,9 @@ Class winLogeo
     Private Sub btnCerrar_Click(sender As Object, e As RoutedEventArgs) Handles btnCerrar.Click
         End
     End Sub
+
+    Private Sub btnLimpiar_Click(sender As Object, e As RoutedEventArgs) Handles btnLimpiar.Click
+        txtPass.Clear()
+        txtUser.Clear()
+    End Sub
 End Class

@@ -23,22 +23,32 @@ Public Class WinDetalle
             dtgProducto.DataContext = dsProducto
         End Using
 
+        txtPrecioUnitario.IsEnabled = False
+        txtProducto.IsEnabled = False
+        txtTotal.IsEnabled = False
+        btnEliminar.IsEnabled = False
+        txtCantidad.IsEnabled = False
         If (TypeOf Me.DataContext Is DataRowView) Then
             Dim fila As DataRowView = Me.DataContext
             txtProducto.Text = fila("Producto")
             txtPrecioUnitario.Text = fila("PrecioUnitario")
             txtCantidad.Text = fila("Cantidad")
             txtTotal.Text = fila("Total")
+            btnEliminar.IsEnabled = True
+            txtCantidad.IsEnabled = True
+            dtgProducto.IsEnabled = False
+
         End If
-        Dim userlog = Me.Owner.DataContext
-        If userlog.Rol = "Vendedor" Then
-            txtPrecioUnitario.IsEnabled = False
-            txtProducto.IsEnabled = False
-        Else
-            txtPrecioUnitario.IsEnabled = True
-            txtProducto.IsEnabled = True
-        End If
-        txtTotal.IsEnabled = False
+        'Dim userlog = Me.Owner.DataContext
+        'If userlog.Rol = "Vendedor" Then
+        '    txtPrecioUnitario.IsEnabled = False
+        '    txtProducto.IsEnabled = False
+        'Else
+        '    txtPrecioUnitario.IsEnabled = True
+        '    txtProducto.IsEnabled = True
+        'End If
+
+
     End Sub
 
     Private Sub dtgProducto_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgProducto.SelectionChanged
@@ -48,21 +58,24 @@ Public Class WinDetalle
             txtPrecioUnitario.Text = fila("Precio")
             productoSelected = New Producto(fila)
         End If
-
+        txtCantidad.IsEnabled = True
     End Sub
 
     Private Sub txtCantidad_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtCantidad.TextChanged
+
         Try
-            txtTotal.Text = productoSelected.Precio * txtCantidad.Text
+            txtTotal.Text = txtPrecioUnitario.Text * txtCantidad.Text
         Catch ex As Exception
             MessageBox.Show("Favor ingrese números")
-            txtCantidad.Text = "0"
+            txtCantidad.Clear()
         End Try
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
         Dim winFactura As WinFactura = Me.Owner
-        dsDetalle = Me.DataContext
+        'Try
+
+
         If TypeOf Me.DataContext Is DataRowView Then
             Dim fila As DataRowView = Me.DataContext
             Dim dsDetalle2 As DataSet = winFactura.dsDetalle
@@ -78,17 +91,32 @@ Public Class WinDetalle
             winFactura.dtgDetalle.DataContext = dsDetalle2
             Me.Owner.DataContext = dsDetalle2
         Else
-            dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
-            winFactura.dtgDetalle.DataContext = dsDetalle
-            Me.Owner.DataContext = dsDetalle
+
+
+            If txtCantidad.Text = "" OrElse txtTotal.Text.Equals("0") Then
+                MessageBox.Show("Ingrese la cantidad")
+            Else
+                dsDetalle = winFactura.dtgDetalle.DataContext
+                dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
+                winFactura.dtgDetalle.DataContext = dsDetalle
+                Me.Owner.DataContext = dsDetalle
+
+
+            End If
+
         End If
-        MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
+            MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
         winFactura.Show()
         Me.Close()
+        'Catch ex As Exception
+
+        '    MessageBox.Show("Llene todos los campos")
+        'End Try
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As RoutedEventArgs) Handles btnEliminar.Click
         Dim winFactura As WinFactura = Me.Owner
+        dsDetalle = winFactura.dtgDetalle.DataContext
         Dim fila As DataRowView = Me.DataContext
         For Each det As DataRow In winFactura.dsDetalle.Tables("Detalle").Rows
             If (det(0) = fila(0)) Then
