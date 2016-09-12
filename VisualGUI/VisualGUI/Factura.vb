@@ -17,6 +17,8 @@
             _fecha = value
         End Set
     End Property
+
+
     Private _cliente As Cliente
     Public Property Cliente() As Cliente
         Get
@@ -37,6 +39,8 @@
         End Set
     End Property
 
+
+
     Private _lugarEmi As Provincia
     Public Property LugarEmision() As Provincia
         Get
@@ -46,6 +50,7 @@
             _lugarEmi = value
         End Set
     End Property
+
 
     Private _detalles As New ArrayList()
     Public Property Detalles() As ArrayList
@@ -84,16 +89,6 @@
         End Get
 
     End Property
-
-    Private _devolucion As Double
-    Public Property Devolucion() As Double
-        Get
-            Return (Me.Total * Me.TipoPago.Valor) / 100
-        End Get
-        Set(ByVal value As Double)
-            _devolucion = value
-        End Set
-    End Property
     Private _tipoPago As Pagos
     Public Property TipoPago() As Pagos
         Get
@@ -103,6 +98,16 @@
             _tipoPago = value
         End Set
     End Property
+    Private _devolucion As Double
+    Public Property Devolucion() As Double
+        Get
+            Return (Me.Total * Me.TipoPago.Valor) / 100
+        End Get
+        Set(ByVal value As Double)
+            _devolucion = value
+        End Set
+    End Property
+
 
     Private _totalPagar As Double
     Public ReadOnly Property TotalPagar() As Double

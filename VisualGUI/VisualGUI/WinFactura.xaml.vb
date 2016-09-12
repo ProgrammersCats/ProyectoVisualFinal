@@ -42,55 +42,149 @@ Public Class WinFactura
 
 
 
+
         If TypeOf Me.Owner Is winAdmin Then
-            MessageBox.Show("holaA")
+            Dim fila As DataRowView = Me.DataContext
+
+            txtNmrFact.Text = fila(0)
+            txtFecha.Text = fila("Fecha")
+            txtVendedor.Text = fila("Vendedor")
+            cmbNombre.Items.Add(fila("Cliente"))
+            cmbProvincia.Items.Add(fila("LugarEmision"))
+            cmbTipoPago.Items.Add(fila("TipoPago"))
+            cmbNombre.SelectedIndex = 0
+            cmbProvincia.SelectedIndex = 0
+            cmbTipoPago.SelectedIndex = 0
+
+            txtRuc.Text = fila("Ruc")
+            txtSubtotal.Text = fila("Subtotal")
+            txtIva.Text = fila("Iva")
+            txtTotal.Text = fila("Total")
+            txtDevolucion.Text = fila("Devolucion")
+            txtTotalPagar.Text = fila("TotalPagar")
+
+            'Dim factura As Factura = Me.DataContext
+            'txtNmrFact.Text = factura.NumeroFactura
+            'txtFecha.Text = factura.Fecha
+            'txtVendedor.Text = factura.Vendedor.Nombre
+            'cmbNombre.Items.Add(factura.Cliente.Nombre)
+            'cmbProvincia.Items.Add(factura.LugarEmision.Nombre)
+            'cmbTipoPago.Items.Add(factura.TipoPago.Tipo)
+            'cmbNombre.SelectedIndex = 0
+            'cmbProvincia.SelectedIndex = 0
+            'cmbTipoPago.SelectedIndex = 0
+
+            'txtRuc.Text = factura.Cliente.Ruc
+            'txtSubtotal.Text = factura.Subtotal
+            'txtIva.Text = factura.IVA
+            'txtTotal.Text = factura.Total
+            'txtDevolucion.Text = factura.Devolucion
+            'txtTotalPagar.Text = factura.TotalPagar
+
+
+            txtNmrFact.IsEnabled = False
+            txtFecha.IsEnabled = False
+            txtVendedor.IsEnabled = False
+            cmbNombre.IsEnabled = False
+            txtRuc.IsEnabled = False
+            txtSubtotal.IsEnabled = False
+            txtIva.IsEnabled = False
+            txtTotal.IsEnabled = False
+            txtDevolucion.IsEnabled = False
+            txtTotalPagar.IsEnabled = False
+            btnAgregarCliente.IsEnabled = False
+            btnCalcular.IsEnabled = False
+            btnDetalle.IsEnabled = False
+            btnEliminar.IsEnabled = False
+            btnGuardar.IsEnabled = False
+            cmbProvincia.IsEnabled = False
+            cmbTipoPago.IsEnabled = False
+
         ElseIf (TypeOf Me.Owner Is winVendedor) Then
-            MessageBox.Show("holaV")
+            If (TypeOf Me.DataContext Is DataRowView) Then
+                Dim fila As DataRowView = Me.DataContext
 
-            Dim winVendedor As winVendedor = Me.Owner
-            Dim usuarioLogeado = Me.DataContext
-            'txtCliente.Text = "Kimmy"
-            txtFecha.Text = DateAndTime.Today
-            txtNmrFact.Text = winVendedor.NroFactura
-            'txtRuc.Text = "0987546855"
-            txtVendedor.Text = Me.DataContext.Nombre
-            factura.Vendedor = usuarioLogeado
-            'factura.Vendedor = Me.DataContext
+                txtNmrFact.Text = fila(0)
+                txtFecha.Text = fila("Fecha")
+                txtVendedor.Text = fila("Vendedor")
+                cmbNombre.Items.Add(fila("Cliente"))
+                cmbProvincia.Items.Add(fila("LugarEmision"))
+                cmbTipoPago.Items.Add(fila("TipoPago"))
+                cmbNombre.SelectedIndex = 0
+                cmbProvincia.SelectedIndex = 0
+                cmbTipoPago.SelectedIndex = 0
 
-            dsDetalle = New DataSet()
-            Dim dtDetalle As New DataTable("Detalle")
-            dtDetalle.Columns.Add("Id")
-            dtDetalle.Columns.Add("Cantidad")
-            dtDetalle.Columns.Add("Total")
-            dtDetalle.Columns.Add("idFactura")
-            dsDetalle.Tables.Add(dtDetalle)
-            dtgDetalle.DataContext = dsDetalle
+                txtRuc.Text = fila("Ruc")
+                txtSubtotal.Text = fila("Subtotal")
+                txtIva.Text = fila("Iva")
+                txtTotal.Text = fila("Total")
+                txtDevolucion.Text = fila("Devolucion")
+                txtTotalPagar.Text = fila("TotalPagar")
 
-            Using dbConexion As New OleDbConnection(dbPath)
-                Dim consulta As String = "Select * From Provincias"
-                Dim consulta2 As String = "Select * From Pagos"
-                Dim consulta3 As String = "Select * From Clientes"
-                Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
-                Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
-                Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
-                dsComboBox = New DataSet("ComboBoxes")
-                dbAdapter.Fill(dsComboBox, "Provincias")
-                dbAdapter2.Fill(dsComboBox, "Pagos")
-                dbAdapter3.Fill(dsComboBox, "Clientes")
-                cmbNombre.Items.Clear()
-                cmbProvincia.Items.Clear()
-                cmbProvincia.Items.Clear()
+                txtNmrFact.IsEnabled = False
+                txtFecha.IsEnabled = False
+                txtVendedor.IsEnabled = False
+                cmbNombre.IsEnabled = False
+                txtRuc.IsEnabled = False
+                txtSubtotal.IsEnabled = False
+                txtIva.IsEnabled = False
+                txtTotal.IsEnabled = False
+                txtDevolucion.IsEnabled = False
+                txtTotalPagar.IsEnabled = False
+                btnAgregarCliente.IsEnabled = False
+                btnCalcular.IsEnabled = False
+                btnDetalle.IsEnabled = False
+                btnEliminar.IsEnabled = False
+                btnGuardar.IsEnabled = False
+                cmbProvincia.IsEnabled = False
+                cmbTipoPago.IsEnabled = False
+            Else
 
-                For Each cat As DataRow In dsComboBox.Tables("Provincias").Rows
-                    cmbProvincia.Items.Add(cat(1))
-                Next
-                For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
-                    cmbTipoPago.Items.Add(cat(1))
-                Next
-                For Each cat As DataRow In dsComboBox.Tables("Clientes").Rows
-                    cmbNombre.Items.Add(cat(4))
-                Next
-            End Using
+                Dim winVendedor As winVendedor = Me.Owner
+                Dim usuarioLogeado = Me.DataContext
+                'txtCliente.Text = "Kimmy"
+                txtFecha.Text = DateAndTime.Today
+                txtNmrFact.Text = winVendedor.NroFactura
+                'txtRuc.Text = "0987546855"
+                txtVendedor.Text = Me.DataContext.Nombre
+                factura.Vendedor = usuarioLogeado
+                'factura.Vendedor = Me.DataContext
+
+                dsDetalle = New DataSet()
+                Dim dtDetalle As New DataTable("Detalle")
+                dtDetalle.Columns.Add("Id")
+                dtDetalle.Columns.Add("Cantidad")
+                dtDetalle.Columns.Add("Total")
+                dtDetalle.Columns.Add("idFactura")
+                dsDetalle.Tables.Add(dtDetalle)
+                dtgDetalle.DataContext = dsDetalle
+
+                Using dbConexion As New OleDbConnection(dbPath)
+                    Dim consulta As String = "Select * From Provincias"
+                    Dim consulta2 As String = "Select * From Pagos"
+                    Dim consulta3 As String = "Select * From Clientes"
+                    Dim dbAdapter As New OleDbDataAdapter(New OleDbCommand(consulta, dbConexion))
+                    Dim dbAdapter2 As New OleDbDataAdapter(New OleDbCommand(consulta2, dbConexion))
+                    Dim dbAdapter3 As New OleDbDataAdapter(New OleDbCommand(consulta3, dbConexion))
+                    dsComboBox = New DataSet("ComboBoxes")
+                    dbAdapter.Fill(dsComboBox, "Provincias")
+                    dbAdapter2.Fill(dsComboBox, "Pagos")
+                    dbAdapter3.Fill(dsComboBox, "Clientes")
+                    cmbNombre.Items.Clear()
+                    cmbProvincia.Items.Clear()
+                    cmbProvincia.Items.Clear()
+
+                    For Each cat As DataRow In dsComboBox.Tables("Provincias").Rows
+                        cmbProvincia.Items.Add(cat(1))
+                    Next
+                    For Each cat As DataRow In dsComboBox.Tables("Pagos").Rows
+                        cmbTipoPago.Items.Add(cat(1))
+                    Next
+                    For Each cat As DataRow In dsComboBox.Tables("Clientes").Rows
+                        cmbNombre.Items.Add(cat(4))
+                    Next
+                End Using
+            End If
         End If
 
         'dsDetalle = Me.DataContext

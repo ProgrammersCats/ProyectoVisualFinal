@@ -153,66 +153,84 @@ Public Class winAdmin
 
     Private Sub dtgFacturas_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgFacturas.SelectionChanged
         Dim fila As DataRowView = sender.SelectedItem
-        Dim cliente As Cliente
-        Dim vendedor As Usuario
-        Dim provincia As Provincia
-        Dim pagos As Pagos
-
         If Not (fila Is Nothing) Then
-            Using dbConexion As New OleDbConnection(dbPath)
-                'CLIENTE
-                Dim sentenciaC As String = "Select * from Clientes"
-                Dim dbAdapter As New OleDbDataAdapter(sentenciaC, dbConexion)
-                Dim dsCliente As New DataSet
-                dbAdapter.Fill(dsCliente, "Cliente")
-                For Each cli As DataRow In dsCliente.Tables("Cliente").Rows
-                    If (cli(0) = fila(0)) Then
-                        cliente = New Cliente(cli(0), cli("Nombre"), cli("Apellido"), cli("Direccion"), cli("Telefono"), cli("Ruc"))
-                    End If
-
-                Next
-                'VENDEDOR
-                Dim sentenciaU As String = "Select * from Usuarios where Rol='Vendedor'"
-                Dim dbAdapterU As New OleDbDataAdapter(sentenciaU, dbConexion)
-                Dim dsVendedor As New DataSet
-                dbAdapterU.Fill(dsVendedor, "Vendedor")
-                For Each ven As DataRow In dsVendedor.Tables("Vendedor").Rows
-                    If (ven(0) = fila(0)) Then
-                        vendedor = New Usuario(ven(0), ven("Usuario"), ven("Contraseña"), ven("Nombre"), ven("Apellido"), ven("Telefono"), ven("Direccion"), ven("Rol"))
-                    End If
-
-                Next
-                'PROVINCIA
-                Dim sentenciaP As String = "Select * from Provincias"
-                Dim dbAdapterP As New OleDbDataAdapter(sentenciaP, dbConexion)
-                Dim dsProvincia As New DataSet
-                dbAdapterP.Fill(dsProvincia, "Provincia")
-                For Each pro As DataRow In dsProvincia.Tables("Provincia").Rows
-                    If (pro(0) = fila(0)) Then
-                        provincia = New Provincia(pro(0), pro("Nombre"), pro("Capital"), pro("iva"))
-                    End If
-
-                Next
-                'PAGOS
-                Dim sentenciaPa As String = "Select * from Pagos"
-                Dim dbAdapterPa As New OleDbDataAdapter(sentenciaPa, dbConexion)
-                Dim dsPagos As New DataSet
-                dbAdapterPa.Fill(dsPagos, "Pagos")
-                For Each pago As DataRow In dsPagos.Tables("Pagos").Rows
-                    If (pago(0) = fila(0)) Then
-                        pagos = New Pagos(pago(0), pago("Tipo"), pago("Cantidad"))
-                    End If
-
-                Next
-            End Using
-
-            Dim factura As New Factura(fila(0), fila("Fecha"), cliente, vendedor, provincia, pagos)
             Dim winFactura As New WinFactura
             winFactura.Owner = Me
-            winFactura.DataContext = factura
+            winFactura.DataContext = fila
             winFactura.Show()
             Me.Hide()
-
         End If
+        'Dim fila As DataRowView = sender.SelectedItem
+        'Dim cliente As Cliente
+        'Dim vendedor As Usuario
+        'Dim provincia As Provincia
+        'Dim pagos As Pagos
+
+        'If Not (fila Is Nothing) Then
+        '    Using dbConexion As New OleDbConnection(dbPath)
+        '        'CLIENTE
+        '        Dim sentenciaC As String = "Select * from Clientes"
+        '        Dim dbAdapter As New OleDbDataAdapter(sentenciaC, dbConexion)
+        '        Dim dsCliente As New DataSet
+        '        dbAdapter.Fill(dsCliente, "Cliente")
+        '        For Each cli As DataRow In dsCliente.Tables("Cliente").Rows
+        '            If (cli(0) = fila(2)) Then
+        '                cliente = New Cliente(cli(0), cli("Nombre"), cli("Apellido"), cli("Direccion"), cli("Telefono"), cli("Ruc"))
+        '                Exit For
+        '            End If
+
+        '        Next
+        '        'VENDEDOR
+        '        Dim sentenciaU As String = "Select * from Usuarios"
+        '        Dim dbAdapterU As New OleDbDataAdapter(sentenciaU, dbConexion)
+        '        Dim dsVendedor As New DataSet
+        '        dbAdapterU.Fill(dsVendedor, "Vendedor")
+        '        For Each ven As DataRow In dsVendedor.Tables("Vendedor").Rows
+
+        '            If (ven(0).Equals(fila(3))) Then
+
+        '                vendedor = New Usuario(ven(0), ven("Usuario"), ven("Contraseña"), ven("Nombre"), ven("Apellido"), ven("Telefono"), ven("Direccion"), ven("Rol"))
+        '                Exit For
+        '            End If
+
+        '        Next
+        '        'PROVINCIA
+        '        Dim sentenciaP As String = "Select * from Provincias"
+        '        Dim dbAdapterP As New OleDbDataAdapter(sentenciaP, dbConexion)
+        '        Dim dsProvincia As New DataSet
+        '        dbAdapterP.Fill(dsProvincia, "Provincia")
+        '        For Each pro As DataRow In dsProvincia.Tables("Provincia").Rows
+
+        '            If (pro(1).Equals(fila(4))) Then
+
+        '                provincia = New Provincia(pro(0), pro("Nombre"), pro("Capital"), pro("iva"))
+        '                Exit For
+        '            End If
+
+        '        Next
+        '        'PAGOS
+        '        Dim sentenciaPa As String = "Select * from Pagos"
+        '        Dim dbAdapterPa As New OleDbDataAdapter(sentenciaPa, dbConexion)
+        '        Dim dsPagos As New DataSet
+        '        dbAdapterPa.Fill(dsPagos, "Pagos")
+        '        For Each pago As DataRow In dsPagos.Tables("Pagos").Rows
+
+        '            If (pago(1).Equals(fila(5))) Then
+
+        '                pagos = New Pagos(pago(0), pago("Tipo"), pago("Cantidad"))
+        '                Exit For
+        '            End If
+
+        '        Next
+        '    End Using
+
+        '    Dim factura As New Factura(fila(0), fila("Fecha"), cliente, vendedor, provincia, pagos)
+        '    Dim winFactura As New WinFactura
+        '    winFactura.Owner = Me
+        '    winFactura.DataContext = factura
+        '    winFactura.Show()
+        '    Me.Hide()
+
+        'End If
     End Sub
 End Class

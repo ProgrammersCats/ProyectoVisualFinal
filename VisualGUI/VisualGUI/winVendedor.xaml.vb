@@ -47,4 +47,17 @@ Public Class winVendedor
         'dsFactura.Tables.Add(dtFactura)
         'dtgVendedor.DataContext = dsFactura
     End Sub
+
+    Private Sub dtgVendedor_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgVendedor.SelectionChanged
+        Dim fila As DataRowView = sender.SelectedItem
+        If Not (fila Is Nothing) Then
+            Dim winFactura As New WinFactura
+            winFactura.Owner = Me
+            winFactura.DataContext = fila
+            winFactura.Show()
+            Me.Hide()
+        End If
+
+
+    End Sub
 End Class
