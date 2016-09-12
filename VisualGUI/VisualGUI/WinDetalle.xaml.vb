@@ -30,6 +30,15 @@ Public Class WinDetalle
             txtCantidad.Text = fila("Cantidad")
             txtTotal.Text = fila("Total")
         End If
+        Dim userlog = Me.Owner.DataContext
+        If userlog.Rol = "Vendedor" Then
+            txtPrecioUnitario.IsEnabled = False
+            txtProducto.IsEnabled = False
+        Else
+            txtPrecioUnitario.IsEnabled = True
+            txtProducto.IsEnabled = True
+        End If
+        txtTotal.IsEnabled = False
     End Sub
 
     Private Sub dtgProducto_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgProducto.SelectionChanged
