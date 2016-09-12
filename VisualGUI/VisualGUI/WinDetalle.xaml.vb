@@ -24,12 +24,23 @@ Public Class WinDetalle
             dtgProducto.DataContext = dsProducto
 
         End Using
+
+        If (TypeOf Me.DataContext Is DataRowView) Then
+            Dim fila As DataRowView = Me.DataContext
+            txtProducto.Text = fila("Producto")
+            txtPrecioUnitario.Text = fila("PrecioUnitario")
+            txtCantidad.Text = fila("Cantidad")
+            txtTotal.Text = fila("Total")
+
+            'dtgProducto.SelectedIndex
+        End If
     End Sub
 
     Private Sub dtgProducto_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles dtgProducto.SelectionChanged
         Dim fila As DataRowView = sender.SelectedItem
         If (fila IsNot Nothing) Then
-            txtProducto.Text = fila(1)
+            txtProducto.Text = fila("Descripcion")
+            txtPrecioUnitario.Text = fila("Precio")
             productoSelected = New Producto(fila)
         End If
 
@@ -47,7 +58,7 @@ Public Class WinDetalle
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
-        Dim winVendedor As winVendedor = Me.Owner.Owner
+        'Dim winVendedor As winVendedor = Me.Owner.Owner
         Dim winFactura As WinFactura = Me.Owner
         'Dim dtDetalle = winFactura.DataContext
         dsDetalle = Me.DataContext
@@ -59,13 +70,48 @@ Public Class WinDetalle
         '    dtDetalle.Columns.Add("Producto")
         '    dtDetalle.Columns.Add("Cantidad")
         '    dtDetalle.Columns.Add("Total")
+        If TypeOf Me.DataContext Is DataRowView Then
+            Dim fila As DataRowView = Me.DataContext
+            Dim dsDetalle2 As DataSet = winFactura.dsDetalle
+            For Each det As DataRow In dsDetalle2.Tables("Detalle").Rows
+                If (det(0) = fila(0)) Then
+                    det("Producto") = txtProducto.Text
+                    det("PrecioUnitario") = txtPrecioUnitario.Text
+                    det("Cantidad") = txtCantidad.Text
+                    det("Total") = txtTotal.Text
+                    Exit For
+                End If
+            Next
 
-        dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, txtCantidad.Text, txtTotal.Text, winVendedor.NroFactura)
+            winFactura.dtgDetalle.DataContext = dsDetalle2
+            Me.Owner.DataContext = dsDetalle2
+        Else
+            dsDetalle.Tables("Detalle").Rows.Add(0, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
 
-        winFactura.dtgDetalle.DataContext = dsDetalle
-        Me.Owner.DataContext = dsDetalle
+            winFactura.dtgDetalle.DataContext = dsDetalle
+            Me.Owner.DataContext = dsDetalle
+        End If
+
         MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
+        winFactura.Show()
         Me.Close()
         'End Using
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As RoutedEventArgs) Handles btnEliminar.Click
+        Dim winFactura As WinFactura = Me.Owner
+        Dim fila As DataRowView = Me.DataContext
+        For Each det As DataRow In winFactura.dsDetalle.Tables("Detalle").Rows
+            If (det(0) = fila(0)) Then
+                det.Delete()
+                Exit For
+            End If
+        Next
+        winFactura.dtgDetalle.DataContext = dsDetalle
+        Me.Owner.DataContext = dsDetalle
+        MessageBox.Show("Se eliminó el detalle, Cerrando ventana..")
+        winFactura.Show()
+        Me.Close()
+
     End Sub
 End Class

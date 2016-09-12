@@ -65,7 +65,7 @@ Public Class DetalleFactura
             dbAdapter.Fill(dsProductos, "Productos")
             'MessageBox.Show(fila(1))
             For Each filaProd As DataRow In dsProductos.Tables("Productos").Rows
-                If filaProd("Id") = fila("Id") Then
+                If filaProd("Descripcion").Equals(fila("Producto")) Then
                     producto = New Producto(filaProd)
                     Me.Item = producto
                     Exit For

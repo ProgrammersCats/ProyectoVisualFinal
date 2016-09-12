@@ -9,8 +9,7 @@
     <Grid Background="#FFDFFFC9">
         <DataGrid x:Name="dtgDetalle" ItemsSource="{Binding Path=Detalle}" HorizontalAlignment="Left" Height="194" Margin="34,164,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
         <Button x:Name="btnDetalle" Content="Agregar Detalle" HorizontalAlignment="Left" Height="30" Margin="34,358,0,0" VerticalAlignment="Top" Width="163" Background="#FFFFF2D0" FontSize="18"/>
-        <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="34,487,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Height="42" Margin="34,546,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
+        <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="34,515,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
         <Label x:Name="label" Content="No. Factura:" HorizontalAlignment="Left" Height="34" Margin="24,10,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
         <TextBox x:Name="txtNmrFact" HorizontalAlignment="Left" Height="34" Margin="151,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
         <Label x:Name="label1" Content="Fecha:" HorizontalAlignment="Left" Height="35" Margin="620,65,0,0" VerticalAlignment="Top" Width="74" FontSize="20"/>
@@ -31,7 +30,7 @@
         <TextBox x:Name="txtDevolucion" HorizontalAlignment="Left" Height="31" Margin="748,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
         <Label x:Name="label4_Copy3" Content="Total a pagar:" HorizontalAlignment="Left" Height="43" Margin="596,507,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>
         <TextBox x:Name="txtTotalPagar" HorizontalAlignment="Left" Height="32" Margin="748,512,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
-        <Button x:Name="btnCalcular" Content="Calcular" HorizontalAlignment="Left" Height="42" Margin="34,426,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
+        <Button x:Name="btnCalcular" Content="Calcular" HorizontalAlignment="Left" Height="42" Margin="34,454,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
         <Label x:Name="lblEmi" Content="Lugar de Emisión:" HorizontalAlignment="Left" Height="45" Margin="519,15,0,0" VerticalAlignment="Top" Width="175" FontSize="20"/>
         <ComboBox x:Name="cmbProvincia" HorizontalAlignment="Left" Margin="716,15,0,0" VerticalAlignment="Top" Width="138" Height="35"/>
         <Label x:Name="label4_Copy4" Content="Tipo de Pago:" HorizontalAlignment="Left" Height="38" Margin="596,410,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>

@@ -135,4 +135,8 @@
         Me.TipoPago = pago
         ', subtotal As Double, iva As Double, total As Double, devolucion As Double, totalPagar As Double
     End Sub
+
+    Friend Sub limpiarDetalle()
+        Me.Detalles.Clear()
+    End Sub
 End Class

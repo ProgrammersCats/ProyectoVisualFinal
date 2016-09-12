@@ -18,7 +18,7 @@ Public Class winVendedor
         Me.Hide()
     End Sub
 
-    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
+    Public Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
         Dim dsFactura As New DataSet
         'Dim dtFactura As New DataTable("Factura")
 
