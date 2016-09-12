@@ -35,8 +35,8 @@ Public Class WinCliente
                     End If
                 Next
                 If Not flag Then
-                dsClientes.Tables("Clientes").Rows.Add(txtId.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtRuc.Text)
-            End If
+                    dsClientes.Tables("Clientes").Rows.Add(txtId.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtNombre.Text, txtRuc.Text)
+                End If
                 Try
                     dbAdapter.Update(dsClientes.Tables("Clientes"))
                     MessageBox.Show("Guardado Exitoso")
