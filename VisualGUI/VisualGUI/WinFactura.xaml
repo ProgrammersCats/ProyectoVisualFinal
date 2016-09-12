@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="FACTURA" Height="655.829" Width="927.069" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFDFFFC9">
-        <DataGrid x:Name="dtgDetalle" ItemsSource="{Binding Path=Detalle}" HorizontalAlignment="Left" Height="194" Margin="34,164,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
-        <Button x:Name="btnDetalle" Content="Agregar Detalle" HorizontalAlignment="Left" Height="30" Margin="34,358,0,0" VerticalAlignment="Top" Width="163" Background="#FFFFF2D0" FontSize="18"/>
+        <DataGrid x:Name="dtgDetalle" ItemsSource="{Binding Path=Detalle}" HorizontalAlignment="Left" Height="194" Margin="34,172,0,0" VerticalAlignment="Top" Width="866" Background="#FFFFF3F3" Foreground="#FFE03939"/>
+        <Button x:Name="btnDetalle" Content="Agregar Detalle" HorizontalAlignment="Left" Height="30" Margin="34,366,0,0" VerticalAlignment="Top" Width="163" Background="#FFFFF2D0" FontSize="18"/>
         <Button x:Name="btnGuardar" Content="Guardar Factura" HorizontalAlignment="Left" Height="43" Margin="34,515,0,0" VerticalAlignment="Top" Width="212" FontSize="24" Background="#FFE2C5FF" FontFamily="Franklin Gothic Medium Cond"/>
         <Label x:Name="label" Content="No. Factura:" HorizontalAlignment="Left" Height="34" Margin="24,10,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
         <TextBox x:Name="txtNmrFact" HorizontalAlignment="Left" Height="34" Margin="151,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
         <Label x:Name="label1" Content="Fecha:" HorizontalAlignment="Left" Height="35" Margin="620,65,0,0" VerticalAlignment="Top" Width="74" FontSize="20"/>
         <TextBox x:Name="txtFecha" HorizontalAlignment="Left" Height="30" Margin="716,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
-        <Label x:Name="label2" Content="Nombre:" HorizontalAlignment="Left" Height="39" Margin="24,111,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
+        <Label x:Name="label2" Content="Nombre:" HorizontalAlignment="Left" Height="39" Margin="26,117,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
         <Label x:Name="label3" Content="RUC:" HorizontalAlignment="Left" Height="32" Margin="634,115,0,0" VerticalAlignment="Top" Width="61" FontSize="20"/>
-        <Button x:Name="btnAgregarCliente" Content="Agregar Cliente" HorizontalAlignment="Left" Height="26" Margin="308,117,0,0" VerticalAlignment="Top" Width="121" Background="#FFEADDBC" FontSize="14"/>
+        <Button x:Name="btnAgregarCliente" Content="Agregar Cliente" HorizontalAlignment="Left" Height="26" Margin="319,108,0,0" VerticalAlignment="Top" Width="122" Background="#FFEADDBC" FontSize="14" RenderTransformOrigin="0.127,0.731"/>
         <TextBox x:Name="txtRuc" HorizontalAlignment="Left" Height="33" Margin="716,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
         <Label x:Name="label2_Copy" Content="Vendedor:" HorizontalAlignment="Left" Height="35" Margin="28,65,0,0" VerticalAlignment="Top" Width="124" FontSize="20"/>
         <TextBox x:Name="txtVendedor" HorizontalAlignment="Left" Height="29" Margin="144,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
@@ -35,7 +35,8 @@
         <ComboBox x:Name="cmbProvincia" HorizontalAlignment="Left" Margin="716,15,0,0" VerticalAlignment="Top" Width="138" Height="35"/>
         <Label x:Name="label4_Copy4" Content="Tipo de Pago:" HorizontalAlignment="Left" Height="38" Margin="596,410,0,0" VerticalAlignment="Top" Width="152" FontSize="20"/>
         <ComboBox x:Name="cmbTipoPago" HorizontalAlignment="Left" Margin="748,413,0,0" VerticalAlignment="Top" Width="138" Height="28"/>
-        <ComboBox x:Name="cmbNombre" HorizontalAlignment="Left" Margin="144,113,0,0" VerticalAlignment="Top" Width="154" Height="33"/>
+        <ComboBox x:Name="cmbNombre" HorizontalAlignment="Left" Margin="146,119,0,0" VerticalAlignment="Top" Width="154" Height="33"/>
+        <Button x:Name="btnModificarCliente" Content="Modificar Cliente" HorizontalAlignment="Left" Height="26" Margin="319,141,0,0" VerticalAlignment="Top" Width="122" Background="#FFEADDBC" FontSize="14" RenderTransformOrigin="0.127,0.731"/>
 
     </Grid>
 </Window>

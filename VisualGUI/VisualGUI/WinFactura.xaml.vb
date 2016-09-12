@@ -8,6 +8,8 @@ Public Class WinFactura
     Dim dsComboBox As DataSet
     Dim dsFactura As DataSet
     Dim factura As New Factura
+    Dim cliente As Cliente
+    Dim idCliente As Integer
     Private Sub Window_Closed(sender As Object, e As EventArgs)
         If TypeOf Me.Owner Is winAdmin Then
             Dim winAdmin As winAdmin = Me.Owner
@@ -35,8 +37,17 @@ Public Class WinFactura
     End Sub
 
     Private Sub btnAgregarCliente_Click(sender As Object, e As RoutedEventArgs) Handles btnAgregarCliente.Click
+        Using dbconexion As New OleDbConnection(dbPath)
+            Dim sentencia As String = "Select * from Clientes"
+            Dim dbAdapter As New OleDbDataAdapter(sentencia, dbconexion)
+            Dim dsCliente As New DataSet
+            dbAdapter.Fill(dsCliente, "Cliente")
+            idCliente = dsCliente.Tables("Cliente").Rows(dsCliente.Tables("Cliente").Rows.Count - 1)("Id") + 1
+        End Using
+
         Dim winCliente As New WinCliente
         winCliente.Owner = Me
+        winCliente.DataContext = idCliente
         winCliente.Show()
         Me.Hide()
     End Sub
@@ -74,7 +85,7 @@ Public Class WinFactura
             btnAgregarCliente.IsEnabled = False
             btnCalcular.IsEnabled = False
             btnDetalle.IsEnabled = False
-
+            btnModificarCliente.IsEnabled = False
             btnGuardar.IsEnabled = False
             cmbProvincia.IsEnabled = False
             cmbTipoPago.IsEnabled = False
@@ -100,6 +111,7 @@ Public Class WinFactura
             txtFecha.IsEnabled = False
             btnCalcular.IsEnabled = False
             dtgDetalle.IsEnabled = False
+            btnModificarCliente.IsEnabled = False
 
             dsDetalle = New DataSet()
             Dim dtDetalle As New DataTable("Detalle")
@@ -211,8 +223,8 @@ Public Class WinFactura
                 Dim dsDetallesBD As New DataSet
                 dbAdapterD.Fill(dsDetallesBD, "Detalle")
                 dbAdapter.Fill(dsFactura, "Facturas")
-                dsDetalle = Me.DataContext
-                If (dsDetalle Is Nothing) Then
+                dsDetalle = Me.dtgDetalle.DataContext
+                If dsDetalle.Tables(0).Rows.Count = 0 Then
                     MessageBox.Show("No hay detalles")
                 Else
                     dsFactura.Tables("Facturas").Rows.Add(txtNmrFact.Text, txtFecha.Text, factura.Cliente.Nombre, factura.Cliente.Ruc, factura.Vendedor.Nombre, factura.LugarEmision.Nombre, factura.TipoPago.Tipo, CDbl(txtSubtotal.Text), CDbl(txtIva.Text), CDbl(txtTotal.Text), CDbl(txtDevolucion.Text), CDbl(txtTotalPagar.Text))
@@ -262,8 +274,27 @@ Public Class WinFactura
             For Each cli As DataRow In dsCliente.Tables("Cliente").Rows
                 If (cli("Nombre").Equals(cmbNombre.SelectedValue)) Then
                     txtRuc.Text = cli("Ruc")
+                    cliente = New Cliente(cli(0), cli("Nombre"), cli("Apellido"), cli("Direccion"), cli("Telefono"), cli("Ruc"))
+                    Exit For
                 End If
             Next
+            btnModificarCliente.IsEnabled = True
         End Using
+    End Sub
+
+    Private Sub btnModificarCliente_Click(sender As Object, e As RoutedEventArgs) Handles btnModificarCliente.Click
+        Dim winCliente As New WinCliente
+        winCliente.Owner = Me
+        winCliente.DataContext = cliente
+        winCliente.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub cmbProvincia_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cmbProvincia.SelectionChanged
+        btnGuardar.IsEnabled = False
+    End Sub
+
+    Private Sub cmbTipoPago_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cmbTipoPago.SelectionChanged
+        btnGuardar.IsEnabled = False
     End Sub
 End Class

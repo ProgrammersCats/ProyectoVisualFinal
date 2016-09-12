@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisualGUI"
         mc:Ignorable="d"
-        Title="CLIENTE" Height="347" Width="389" Closed="Window_Closed">
+        Title="CLIENTE" Height="380.784" Width="371.433" Closed="Window_Closed" Loaded="Window_Loaded">
     <Grid Background="#FFF2DFFF">
         <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Height="34" Margin="57,62,0,0" VerticalAlignment="Top" Width="102" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Height="35" Margin="57,101,0,0" VerticalAlignment="Top" Width="121" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label2" Content="RUC" HorizontalAlignment="Left" Height="36" Margin="57,141,0,0" VerticalAlignment="Top" Width="75" FontSize="18" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="26" Margin="196,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="1"/>
-        <TextBox x:Name="txtRuc" HorizontalAlignment="Left" Height="26" Margin="196,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="3"/>
+        <TextBox x:Name="txtNombre" Text="{Binding Nombre}" HorizontalAlignment="Left" Height="26" Margin="196,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="1"/>
+        <TextBox x:Name="txtRuc" Text="{Binding Ruc}" HorizontalAlignment="Left" Height="26" Margin="196,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="3"/>
         <Label x:Name="label3_Copy" Content="Dirección" HorizontalAlignment="Left" Height="37" Margin="57,181,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label x:Name="label3_Copy1" Content="Teléfono" HorizontalAlignment="Left" Height="37" Margin="57,223,0,0" VerticalAlignment="Top" Width="86" FontSize="18" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtDireccion" HorizontalAlignment="Left" Height="26" Margin="196,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="4"/>
-        <TextBox x:Name="txtTelefono" HorizontalAlignment="Left" Height="26" Margin="196,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="5"/>
-        <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="26" Margin="196,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="2"/>
+        <TextBox x:Name="txtDireccion" Text="{Binding Direccion}" HorizontalAlignment="Left" Height="26" Margin="196,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="4"/>
+        <TextBox x:Name="txtTelefono" Text="{Binding Telefono}" HorizontalAlignment="Left" Height="26" Margin="196,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="5"/>
+        <TextBox x:Name="txtApellido" Text="{Binding Apellido}" HorizontalAlignment="Left" Height="26" Margin="196,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="2"/>
         <Button x:Name="BtnGuardar" Content="Guardar" HorizontalAlignment="Left" Height="31" Margin="145,272,0,0" VerticalAlignment="Top" Width="94" FontSize="22" TabIndex="6"/>
         <Label x:Name="label_Copy" Content="ID" HorizontalAlignment="Left" Height="34" Margin="57,23,0,0" VerticalAlignment="Top" Width="102" FontSize="18" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="26" Margin="196,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="0"/>
+        <TextBox x:Name="txtId" Text="{Binding Id}" HorizontalAlignment="Left" Height="26" Margin="196,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" TabIndex="0"/>
 
     </Grid>
 </Window>

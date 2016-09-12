@@ -73,45 +73,48 @@ Public Class WinDetalle
 
     Private Sub btnGuardar_Click(sender As Object, e As RoutedEventArgs) Handles btnGuardar.Click
         Dim winFactura As WinFactura = Me.Owner
-        'Try
+        Try
 
 
-        If TypeOf Me.DataContext Is DataRowView Then
-            Dim fila As DataRowView = Me.DataContext
-            Dim dsDetalle2 As DataSet = winFactura.dsDetalle
-            For Each det As DataRow In dsDetalle2.Tables("Detalle").Rows
-                If (det(0) = fila(0)) Then
-                    det("Producto") = txtProducto.Text
-                    det("PrecioUnitario") = txtPrecioUnitario.Text
-                    det("Cantidad") = txtCantidad.Text
-                    det("Total") = txtTotal.Text
-                    Exit For
-                End If
-            Next
-            winFactura.dtgDetalle.DataContext = dsDetalle2
-            Me.Owner.DataContext = dsDetalle2
-        Else
-
-
-            If txtCantidad.Text = "" OrElse txtTotal.Text.Equals("0") Then
-                MessageBox.Show("Ingrese la cantidad")
+            If TypeOf Me.DataContext Is DataRowView Then
+                Dim fila As DataRowView = Me.DataContext
+                Dim dsDetalle2 As DataSet = winFactura.dsDetalle
+                For Each det As DataRow In dsDetalle2.Tables("Detalle").Rows
+                    If (det(0) = fila(0)) Then
+                        det("Producto") = txtProducto.Text
+                        det("PrecioUnitario") = txtPrecioUnitario.Text
+                        det("Cantidad") = txtCantidad.Text
+                        det("Total") = txtTotal.Text
+                        Exit For
+                    End If
+                Next
+                winFactura.dtgDetalle.DataContext = dsDetalle2
+                Me.Owner.DataContext = dsDetalle2
+                MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
+                winFactura.Show()
+                Me.Close()
             Else
-                dsDetalle = winFactura.dtgDetalle.DataContext
-                dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
-                winFactura.dtgDetalle.DataContext = dsDetalle
-                Me.Owner.DataContext = dsDetalle
 
+
+                If txtCantidad.Text = "" OrElse txtTotal.Text.Equals("0") Then
+                    MessageBox.Show("Ingrese la cantidad")
+                Else
+                    dsDetalle = winFactura.dtgDetalle.DataContext
+                    dsDetalle.Tables("Detalle").Rows.Add(productoSelected.Id, productoSelected.Descripcion, productoSelected.Precio, txtCantidad.Text, txtTotal.Text, winFactura.txtNmrFact.Text)
+                    winFactura.dtgDetalle.DataContext = dsDetalle
+                    Me.Owner.DataContext = dsDetalle
+                    MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
+                    winFactura.Show()
+                    Me.Close()
+
+                End If
 
             End If
 
-        End If
-            MessageBox.Show("Se guardó el detalle, Cerrando ventana..")
-        winFactura.Show()
-        Me.Close()
-        'Catch ex As Exception
+        Catch ex As Exception
 
-        '    MessageBox.Show("Llene todos los campos")
-        'End Try
+            MessageBox.Show("Llene todos los campos")
+        End Try
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As RoutedEventArgs) Handles btnEliminar.Click
